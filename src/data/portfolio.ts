@@ -28,7 +28,7 @@ export const portfolio = {
   technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
 };
 
-export const projects: Project[] = [
+export const projects: [Project, ...Project[]] = [
   {
     title: "Project title",
     category: "Featured project",
