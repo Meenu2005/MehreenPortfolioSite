@@ -1,0 +1,12 @@
+# Roadmap
+
+- [x] Analyze the supplied portfolio prototype
+- [x] Build the public Home, About, Work, and Connect pages
+- [x] Add reusable editable portfolio and project data
+- [x] Apply responsive visual system and restrained motion
+- [x] Validate navigation, interactions, mobile layout, and preview health
+
+## Later milestone
+
+- [ ] Add authentication and stored user profiles
+- [ ] Add ratings, comments, real-time chat, owner dashboard, email notifications, and security rules
