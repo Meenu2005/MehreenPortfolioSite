@@ -1,9 +1,9 @@
 # Roadmap
 
 - [x] Analyze the supplied portfolio prototype
-- [ ] Build the public Home, About, Work, and Connect pages
-- [ ] Add reusable editable portfolio and project data
-- [ ] Apply responsive visual system and restrained motion
+- [x] Build the public Home, About, Work, and Connect pages
+- [x] Add reusable editable portfolio and project data
+- [x] Apply responsive visual system and restrained motion
 - [ ] Validate navigation, interactions, mobile layout, and preview health
 
 ## Later milestone
