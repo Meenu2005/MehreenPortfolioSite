@@ -4,7 +4,7 @@
 - [x] Build the public Home, About, Work, and Connect pages
 - [x] Add reusable editable portfolio and project data
 - [x] Apply responsive visual system and restrained motion
-- [ ] Validate navigation, interactions, mobile layout, and preview health
+- [x] Validate navigation, interactions, mobile layout, and preview health
 
 ## Later milestone
 
