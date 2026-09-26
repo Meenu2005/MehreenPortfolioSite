@@ -11,49 +11,74 @@ export type Project = {
 };
 
 export const portfolio = {
-  name: "YOUR NAME",
-  role: "Frontend Developer",
-  specialty: "with experience in React",
+  name: "Mehreen Rao",
+  role: "Make your work look as good online as it does in real life.",
+  specialty: " experience in React",
   intro:
-    "Add a concise introduction about the interfaces you build, the people you help, and what makes your approach distinct.",
+    "Websites for agencies, creators, brands, and businesses, designed and developed around your work, your audience, and your goals.",
   availability: "Available for selected projects",
-  education: "Add your education or current learning path",
-  skills: ["React", "TypeScript", "Responsive UI", "Accessible Design"],
+  education: "BCS - SSUET",
+  skills: ["React", "TypeScript", "Responsive UI", "Accessible Design "],
   experience: [
-    "Add your current or most recent role",
-    "Add a meaningful freelance or client engagement",
-    "Add a result you are proud of",
+    "Freelance Frontend Developer — 2+ years",
+    "Built custom websites for agencies, brands, and businesses",
+    "Handled development, responsive UI, forms, integrations, and deployment",
   ],
-  clientWork: "Add the kind of client work you take on",
+  clientWork: "Zayvo Media, Short form video editing agency",
   technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
 };
 
 export const projects: [Project, ...Project[]] = [
   {
-    title: "Project title",
-    category: "Featured project",
-    description: "Add a short, outcome-focused summary of this project.",
-    problem: "Describe the real problem this project addressed.",
-    solution: "Explain your approach and the result without inventing metrics.",
-    technologies: ["React", "TypeScript", "CSS"],
+    title: "Zayvo Media",
+    category: "Client work",
+    description:
+      "A premium website built for a short-form video editing agency to showcase its work, services, and brand.",
+    problem:
+      "Zayvo needed a professional digital presence that could communicate its services clearly while matching its premium, modern brand identity.",
+    solution:
+      "Designed and developed a responsive website with custom layouts, interactive sections, video showcases, animations, and a production deployment with custom domain and SSL.",
+    technologies: ["HTML", "CSS", "JavaScript", "Netlify"],
     accent: "blue",
   },
+
   {
-    title: "Project title",
+    title: "Softro Solutions",
     category: "Client work",
-    description: "Replace this with a concise description of your client work.",
-    problem: "Describe the client or user need.",
-    solution: "Summarize the experience you designed and built.",
-    technologies: ["React", "Vite", "Firebase"],
+    description:
+      "A complete business website designed and developed from the initial structure through production.",
+    problem:
+      "The business needed a professional online presence that clearly presented its services and worked smoothly across desktop and mobile.",
+    solution:
+      "Built the website from UX structure to deployment with responsive layouts, custom interactions, contact integration, and cross-device optimization.",
+    technologies: ["HTML", "CSS", "JavaScript", "Netlify"],
     accent: "wine",
   },
+
   {
-    title: "Project title",
-    category: "Personal exploration",
-    description: "Use this space for an experiment that shows how you think.",
-    problem: "Describe the idea or technical challenge.",
-    solution: "Share the interaction, visual, or engineering approach.",
-    technologies: ["JavaScript", "UI Design", "Animation"],
+    title: "Forumotion Community Platform",
+    category: "Client work",
+    description:
+      "A customized community forum experience built around the client's requirements and visual direction.",
+    problem:
+      "The client needed a more customized forum experience with a distinct visual identity, responsive layouts, and easier navigation.",
+    solution:
+      "Customized the platform with tailored CSS, responsive layouts, navigation improvements, and iterative design updates based on client feedback.",
+    technologies: ["HTML", "CSS", "JavaScript", "Forumotion"],
     accent: "moss",
   },
+
+  {
+    title: "FindIt",
+    category: "Full-stack project",
+    description:
+      "A full-stack lost and found platform for posting, discovering, and managing lost or found items.",
+    problem:
+      "Users needed a simple way to publish lost or found items, search listings, and manage their posts.",
+    solution:
+      "Built a React frontend with an Express REST API, PostgreSQL database, authentication, protected routes, filtering, and image uploads.",
+    technologies: ["React", "Node.js", "Express", "PostgreSQL"],
+    accent: "blue",
+  },
 ];
+

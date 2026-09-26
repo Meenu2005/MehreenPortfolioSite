@@ -19,16 +19,25 @@ type LinkButtonProps = {
   children: ReactNode;
   tone?: Tone;
   className?: string;
+  onClick?: () => void;
 };
-
-export function LinkButton({ to, children, tone = "primary", className = "" }: LinkButtonProps) {
+export function LinkButton({
+  to,
+  children,
+  tone = "primary",
+  className = "",
+  onClick,
+}: LinkButtonProps) {
   return (
-    <Link to={to} className={`${base} ${tones[tone]} ${className}`}>
+    <Link
+      to={to}
+      onClick={onClick}
+      className={`${base} ${tones[tone]} ${className}`}
+    >
       {children}
     </Link>
   );
 }
-
 type ActionButtonProps = ComponentProps<"button"> & { tone?: Tone };
 
 export function ActionButton({ tone = "primary", className = "", ...props }: ActionButtonProps) {
