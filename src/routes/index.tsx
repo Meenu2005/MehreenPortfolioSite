@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowDown, ArrowRight, MessageSquare, Star } from "lucide-react";
-import { useState } from "react";
-import { ActionButton, LinkButton } from "@/components/portfolio/Button";
-import { PortraitPlaceholder } from "@/components/portfolio/PortraitPlaceholder";
+import { ArrowDown, ArrowRight } from "lucide-react";
+
+import { LinkButton } from "@/components/portfolio/Button";
 import { SectionHeading } from "@/components/portfolio/SectionHeading";
 import { ProjectCard } from "@/components/portfolio/ProjectCard";
 import { portfolio, projects } from "@/data/portfolio";
@@ -11,86 +10,144 @@ import { FeedbackSection } from "@/components/portfolio/FeedbackSection";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: `${portfolio.name} — Fontend Developer` },
-      { name: "description", content: "A React frontend developer portfolio featuring selected work, experience, and a direct way to connect." },
-      { property: "og:title", content: `${portfolio.name} — Frontend Developer` },
-      { property: "og:description", content: "Explore selected React work, experience, and ways to connect." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      {
+        title: `${portfolio.name} — Frontend Developer`,
+      },
+      {
+        name: "description",
+        content:
+          "A React frontend developer portfolio featuring selected work, experience, and a direct way to connect.",
+      },
+      {
+        property: "og:title",
+        content: `${portfolio.name} — Frontend Developer`,
+      },
+      {
+        property: "og:description",
+        content:
+          "Explore selected React work, experience, and ways to connect.",
+      },
+      {
+        property: "og:type",
+        content: "website",
+      },
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
     ],
   }),
   component: Index,
 });
 
 function Index() {
-  const [notice, setNotice] = useState<"rating" | "comment" | null>(null);
-
   return (
     <>
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bg-grid opacity-30" aria-hidden="true" />
-        <div className="relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl items-center gap-12 px-5 py-14 sm:px-8 lg:grid-cols-[1.12fr_0.88fr] lg:py-16">
-          <div className="reveal-up">
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-connect/30 bg-connect/5 px-3 py-1.5 text-xs font-semibold text-connect">
-              <span className="size-1.5 rounded-full bg-connect shadow-status" aria-hidden="true" /> {portfolio.availability}
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-[#28323C]/50 bg-black">
+        <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl flex-col items-center justify-center px-5 py-20 text-center sm:px-8">
+
+          {/* Availability */}
+          <div className="reveal-up mb-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#87917F]">
+              <span className="mr-2 inline-block size-1.5 rounded-full bg-[#E85D3F] align-middle" />
+              {portfolio.availability}
             </p>
-            <h1 className="font-display text-4xl font-semibold leading-[0.92] sm:text-3xl lg:text-5xl">
-             Have something worth building? <br />Let’s put it online.<span className="text-primary">.</span>
+          </div>
+
+          {/* Main heading */}
+          <div className="reveal-up max-w-4xl">
+            <h1 className="font-myfont   leading-[0.98] tracking-tight text-[#E85D3F] sm:text-6xl lg:text-7xl">
+              Have something worth building?
+              <br />
+              Let’s put it online.
+              <span className="text-[#A9485D]">.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-xl leading-8 text-muted-foreground sm:text-xl">
-               I design and develop websites for agencies, creators, brands, and businesses, built around what you do, who you serve, and how you want to be seen.
+          </div>
+
+          {/* Description */}
+          <div className="reveal-up delay-1 mt-7 max-w-2xl">
+            <p className="text-base leading-7 text-[#B8BDB8] sm:text-lg sm:leading-8">
+              I design and develop websites for agencies, creators, brands,
+              and businesses, built around what you do, who you serve, and
+              how you want to be seen.
             </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <LinkButton to="/work" tone="project">View my work <ArrowRight className="size-4" /></LinkButton>
-              <LinkButton to="/about" tone="quiet">About me</LinkButton>
-            </div>
-            <div className="mt-12 grid max-w-xl gap-5 border-t border-border pt-6 sm:grid-cols-2">
-              {/* <button type="button" onClick={() => setNotice("rating")} className="group text-left">
-                <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Portfolio rating</span>
-                <span className="mt-2 flex items-center gap-1 text-rating">
-                  {[1, 2, 3, 4, 5].map((star) => <Star key={star} className="size-5 fill-current transition-transform group-hover:-translate-y-0.5" />)}
-                </span>
-              </button> */}
-              {/* <button type="button" onClick={() => setNotice("comment")} className="group flex items-center gap-3 text-left">
-                <span className="grid size-10 place-items-center rounded-full bg-comment/10 text-comment"><MessageSquare className="size-5" /></span>
-                <span><span className="block text-sm font-bold">Comments & suggestions</span><span className="text-xs text-muted-foreground">Join the conversation</span></span>
-              </button> */}
+          </div>
+
+          {/* Buttons */}
+          <div className=" delay-1 mt-9 flex flex-wrap items-center justify-center gap-5">
+            <LinkButton
+              to="/work"
               
+            >
+              View my work
+              <ArrowRight className="size-4" />
+            </LinkButton>
+
+            <LinkButton
+              to="/about"
+              tone="quiet"
+            >
+              About me
+            </LinkButton>
+          </div>
+
+          {/* Bottom scroll indicator */}
+          <div className="reveal-up delay-1 absolute bottom-8 left-1/2 -translate-x-1/2">
+            <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#68716B]">
+              <span>Scroll to explore</span>
+              <ArrowDown className="size-3.5" />
             </div>
-           
-            {notice && (
-              <div className="mt-5 flex max-w-xl items-start justify-between gap-4 rounded-md border border-border bg-surface p-4 text-sm shadow-soft" role="status">
-                <p><strong className="capitalize">{notice}</strong> will open after Google sign-in in the next milestone.</p>
-                <ActionButton tone="quiet" className="min-h-8 px-2 py-1 text-xs" onClick={() => setNotice(null)}>Close</ActionButton>
-              </div>
-            )}
           </div>
-          <div className="reveal-up delay-1 lg:pl-6">
-            <PortraitPlaceholder />
-            <div className="mt-5 flex items-center justify-between text-xs font-bold uppercase tracking-widest text-muted-foreground">
-              <span>Profile / 01</span><span className="flex items-center gap-2">Scroll to explore <ArrowDown className="size-4" /></span>
-            </div>
-          </div>
-        </div>
-      </section>
- <FeedbackSection />
-      <section className="border-b border-border bg-surface py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <SectionHeading eyebrow="Selected work" title="Ideas shaped into useful, memorable interfaces." copy="A project collection ready for your real case studies. Every card is driven by one editable data file." />
-            <LinkButton to="/work" tone="quiet">See all work <ArrowRight className="size-4" /></LinkButton>
-          </div>
-          <div className="mt-12"><ProjectCard project={projects[0]} index={0} /></div>
         </div>
       </section>
 
-      <section className="bg-foreground py-20 text-background sm:py-24">
+      {/* Feedback */}
+      <FeedbackSection />
+
+      {/* Selected Work */}
+      <section className="border-b border-[#28323C]/50 bg-[#0C1117] py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeading
+              eyebrow="Selected work"
+              title="Ideas shaped into useful, memorable interfaces."
+              copy="A project collection ready for your real case studies. Every card is driven by one editable data file."
+            />
+
+            <LinkButton to="/work" tone="quiet">
+              See all work
+              <ArrowRight className="size-4" />
+            </LinkButton>
+          </div>
+
+          <div className="mt-12">
+            <ProjectCard project={projects[0]} index={0} />
+          </div>
+        </div>
+      </section>
+
+      {/* Let's Connect */}
+      <section className="border-b border-[#28323C]/50 bg-black py-20 text-[#F5EFE6] sm:py-24">
         <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-widest text-accent">Let's connect / 03</p>
-            <h2 className="mt-5 font-display text-5xl font-semibold leading-tight sm:text-6xl">Have a project worth talking about?</h2>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E85D3F]">
+              Let's connect / 03
+            </p>
+
+            <h2 className="mt-5 font-display text-5xl font-semibold leading-tight text-[#E6D2B5] sm:text-6xl">
+              Have a project worth talking about?
+            </h2>
           </div>
-          <LinkButton to="/connect" tone="connect" className="shrink-0">Start a conversation <ArrowRight className="size-4" /></LinkButton>
+
+          <LinkButton
+            to="/connect"
+            tone="connect"
+            className="shrink-0"
+          >
+            Start a conversation
+            <ArrowRight className="size-4" />
+          </LinkButton>
         </div>
       </section>
     </>

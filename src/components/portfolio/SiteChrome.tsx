@@ -1,9 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, Menu, X, LogIn, LogOut, Shield } from "lucide-react";
+import { LogIn, LogOut, Menu, Shield, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { portfolio } from "@/data/portfolio";
-import { LinkButton } from "./Button";
+import avatarImage from "@/assets/loader/avatar-idle.png";
 
 // @ts-ignore -- Firebase config is shipped as JS and lacks generated typings.
 import { auth } from "@/firebase/config";
@@ -63,8 +63,8 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
+    <header className="sticky top-0 z-40 bg-black/95 backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-7xl items-center px-5 sm:px-8">
 
         {/* Logo */}
         <Link
@@ -72,28 +72,33 @@ export function SiteHeader() {
           className="group flex items-center gap-3"
           onClick={() => setOpen(false)}
         >
-          <span className="grid size-8 place-items-center rounded-sm bg-primary text-xs font-bold text-primary-foreground transition-transform group-hover:-rotate-3">
-            MR
+          <span className="grid size-9 place-items-center overflow-hidden rounded-full bg-[#641F32] transition-colors duration-300 group-hover:bg-[#A9485D]">
+            <img
+              src={avatarImage}
+              alt=""
+              className="h-full w-full object-cover"
+              draggable={false}
+            />
           </span>
 
-          <span className="text-sm font-bold uppercase tracking-wide">
+          <span className="text-sm font-semibold uppercase tracking-[0.14em] text-[#E6D2B5] transition-colors duration-300 group-hover:text-white">
             {portfolio.name}
           </span>
         </Link>
 
         {/* Desktop navigation */}
         <nav
-          className="hidden items-center gap-1 md:flex"
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex"
           aria-label="Main navigation"
         >
           {links.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+              className={`text-sm font-medium transition-colors duration-300 ${
                 pathname === link.to
-                  ? "bg-muted text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "text-[#E85D3F]"
+                  : "text-[#87917F] hover:text-[#E85D3F]"
               }`}
             >
               {link.label}
@@ -104,10 +109,10 @@ export function SiteHeader() {
           {isAdmin && (
             <Link
               to="/admin"
-              className={`ml-2 flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+              className={`flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 ${
                 pathname === "/admin"
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  ? "text-[#E85D3F]"
+                  : "text-[#87917F] hover:text-[#E85D3F]"
               }`}
             >
               <Shield className="size-4" />
@@ -115,18 +120,22 @@ export function SiteHeader() {
             </Link>
           )}
 
-          <LinkButton to="/connect" tone="connect" className="ml-3">
+          <Link
+            to="/connect"
+            className="text-sm font-medium text-[#87917F] transition-colors duration-300 hover:text-[#E85D3F]"
+          >
             Let's connect
-            <ArrowUpRight className="size-4" aria-hidden="true" />
-          </LinkButton>
+          </Link>
+        </nav>
 
-          {/* Auth */}
+        {/* Auth - right side */}
+        <div className="ml-auto hidden items-center md:flex">
           {!authLoading &&
             (user ? (
               <button
                 type="button"
                 onClick={handleLogout}
-                className="ml-2 flex items-center gap-2 rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition hover:bg-muted"
+                className="flex items-center gap-2 rounded-full bg-[#641F32] px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-[#A9485D]"
               >
                 <LogOut className="size-4" />
                 Logout
@@ -135,13 +144,13 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={handleLogin}
-                className="ml-2 flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+                className="flex items-center gap-2 rounded-full bg-[#641F32] px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-[#A9485D]"
               >
                 <LogIn className="size-4" />
                 Login
               </button>
             ))}
-        </nav>
+        </div>
 
         {/* Mobile menu button */}
         <button
@@ -149,7 +158,7 @@ export function SiteHeader() {
           aria-label={open ? "Close navigation" : "Open navigation"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
-          className="grid size-11 place-items-center rounded-md border border-border bg-surface text-foreground md:hidden"
+          className="ml-auto grid size-10 place-items-center text-[#87917F] transition-colors hover:text-[#E85D3F] md:hidden"
         >
           {open ? (
             <X className="size-5" />
@@ -162,17 +171,21 @@ export function SiteHeader() {
       {/* Mobile navigation */}
       {open && (
         <nav
-          className="border-t border-border bg-background px-5 py-4 md:hidden"
+          className="border-t border-[#28323C]/50 bg-black px-5 py-5 md:hidden"
           aria-label="Mobile navigation"
         >
-          <div className="mx-auto grid max-w-7xl gap-2">
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-5">
 
             {links.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-3 font-medium hover:bg-muted"
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  pathname === link.to
+                    ? "text-[#E85D3F]"
+                    : "text-[#87917F] hover:text-[#E85D3F]"
+                }`}
               >
                 {link.label}
               </Link>
@@ -182,21 +195,24 @@ export function SiteHeader() {
               <Link
                 to="/admin"
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 rounded-md px-3 py-3 font-medium hover:bg-muted"
+                className={`flex items-center gap-2 text-sm font-medium transition-colors duration-300 ${
+                  pathname === "/admin"
+                    ? "text-[#E85D3F]"
+                    : "text-[#87917F] hover:text-[#E85D3F]"
+                }`}
               >
                 <Shield className="size-4" />
                 Admin
               </Link>
             )}
 
-            <LinkButton
+            <Link
               to="/connect"
-              tone="connect"
-              className="mt-2"
               onClick={() => setOpen(false)}
+              className="text-sm font-medium text-[#87917F] transition-colors duration-300 hover:text-[#E85D3F]"
             >
               Let's connect
-            </LinkButton>
+            </Link>
 
             {!authLoading &&
               (user ? (
@@ -206,7 +222,7 @@ export function SiteHeader() {
                     handleLogout();
                     setOpen(false);
                   }}
-                  className="mt-1 flex items-center justify-center gap-2 rounded-md border border-border px-3 py-3 font-medium hover:bg-muted"
+                  className="mt-1 flex items-center gap-2 rounded-full bg-grid px-5 py-2.5 text-sm font-medium text-white  duration-300 "
                 >
                   <LogOut className="size-4" />
                   Logout
@@ -218,10 +234,10 @@ export function SiteHeader() {
                     handleLogin();
                     setOpen(false);
                   }}
-                  className="mt-1 flex items-center justify-center gap-2 rounded-md bg-primary px-3 py-3 font-medium text-primary-foreground"
+                  className="mt-1 flex items-center gap-2 rounded-full bg-grid px-5 py-2.5 text-sm font-medium text-white  duration-300 "
                 >
                   <LogIn className="size-4" />
-                  Login with Google
+                  Login
                 </button>
               ))}
           </div>
@@ -233,8 +249,8 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
+    <footer className="border-t border-[#28323C]/60 bg-black">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-sm text-[#87917F] sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <p>Designed and built by {portfolio.name}.</p>
         <p>React portfolio · Details ready to personalize</p>
       </div>

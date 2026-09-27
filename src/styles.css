@@ -83,7 +83,7 @@
   --card-foreground: oklch(0.17 0.022 31);
   --popover: oklch(0.982 0.012 78);
   --popover-foreground: oklch(0.17 0.022 31);
-  --primary: oklch(0.39 0.119 14);
+  --primary: oklch(64.267% 0.16828 46.589);
   --primary-foreground: oklch(0.97 0.015 78);
   --secondary: oklch(0.88 0.041 74);
   --secondary-foreground: oklch(0.22 0.025 32);
@@ -95,7 +95,7 @@
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.79 0.035 68);
   --input: oklch(0.79 0.035 68);
-  --ring: oklch(0.39 0.119 14);
+  --ring: oklch(64.267% 0.16828 46.589);
   --surface: oklch(0.985 0.012 78);
   --connect: oklch(0.36 0.066 141);
   --connect-foreground: oklch(0.98 0.01 80);
@@ -170,9 +170,22 @@
     text-rendering: optimizeLegibility;
   }
 
-  html { scroll-behavior: smooth; }
-  button, a, input, textarea { letter-spacing: 0; }
-  ::selection { background: var(--color-primary); color: var(--color-primary-foreground); }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  button,
+  a,
+  input,
+  textarea {
+    letter-spacing: 0;
+
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
 }
 
 @utility page-shell {
@@ -186,20 +199,84 @@
   background-size: 3rem 3rem;
 }
 
-.portrait-frame { border-radius: 50% 50% 0.5rem 0.5rem / 18% 18% 0.5rem 0.5rem; }
-.reveal-up { animation: reveal-up 700ms cubic-bezier(.22,1,.36,1) both; }
-.delay-1 { animation-delay: 120ms; }
+.portrait-frame {
+  border-radius: 50% 50% 0.5rem 0.5rem / 18% 18% 0.5rem 0.5rem;
+}
+
+.reveal-up {
+  animation: reveal-up 700ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.delay-1 {
+  animation-delay: 120ms;
+}
 
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (min-width: 640px) {
-  .page-shell { padding: 6rem 2rem 8rem; }
+  .page-shell {
+    padding: 6rem 2rem 8rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  25% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(280%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@font-face {
+  font-family: "MyFont";
+  src: url("/src/assets/fonts/BounceDash.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-myfont {
+  font-family: "MyFont", sans-serif;
 }
