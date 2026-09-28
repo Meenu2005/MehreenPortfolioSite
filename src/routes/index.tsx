@@ -122,7 +122,7 @@ function Index() {
           </div>
 
           <div className="mt-12">
-            <ProjectCard project={projects[0]} index={0} />
+            {/* <ProjectCard project={projects[0]} index={0} /> */}
           </div>
         </div>
       </section>
