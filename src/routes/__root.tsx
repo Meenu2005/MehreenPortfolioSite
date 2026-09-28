@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -149,8 +150,11 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
 
   const [loading, setLoading] = useState(true);
+
+  const isConnectPage = location.pathname === "/connect";
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -159,13 +163,13 @@ function RootComponent() {
       )}
 
       <div className="min-h-screen bg-background text-foreground">
-        <SiteHeader />
+        {!isConnectPage && <SiteHeader />}
 
         <main>
           <Outlet />
         </main>
 
-        <SiteFooter />
+        {!isConnectPage && <SiteFooter />}
       </div>
     </QueryClientProvider>
   );

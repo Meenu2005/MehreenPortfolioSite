@@ -222,9 +222,9 @@ export function SiteHeader() {
                     handleLogout();
                     setOpen(false);
                   }}
-                  className="mt-1 flex items-center gap-2 rounded-full bg-grid px-5 py-2.5 text-sm font-medium text-white  duration-300 "
+                  className="mt-1 flex items-center gap-2 rounded-full bg-grid px-5 py-2.5 text-sm font-medium text-white bg-[#dc651b] duration-300 "
                 >
-                  <LogOut className="size-4" />
+                  <LogOut className="size-4  bg-[#dc651b] " />
                   Logout
                 </button>
               ) : (
