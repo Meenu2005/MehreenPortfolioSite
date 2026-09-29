@@ -10,6 +10,11 @@ export type Project = {
   accent: "blue" | "wine" | "moss";
   link: string;
   logo?: string;
+  review?: {
+    clientName: string;
+    profilePhoto: string;
+    text: string;
+  };
 };
 import zayvoLogo from "@/assets/zayvo.png";
 import softro from "@/assets/softro.png";

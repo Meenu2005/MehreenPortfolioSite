@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 
-import avatarVideo from "@/assets/loader/avatar-wave.mp4";
+import avatarVideo from "@/assets/loader/avatar-wave-nobg.webm";
 
 const messages = [
   "Hey, welcome!",
@@ -24,7 +24,7 @@ export function PortfolioLoader({
       setMessageIndex(
         (current) => (current + 1) % messages.length
       );
-    }, 1600);
+    }, 200);
 
     return () => {
       window.clearInterval(timer);
@@ -38,7 +38,7 @@ export function PortfolioLoader({
     };
 
     if (document.readyState === "complete") {
-      const timer = window.setTimeout(finishLoading, 1600);
+      const timer = window.setTimeout(finishLoading, 200);
 
       return () => {
         window.clearTimeout(timer);

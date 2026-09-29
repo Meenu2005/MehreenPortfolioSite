@@ -108,7 +108,7 @@ function Index() {
       {/* Selected Work */}
       <section className="border-b border-[#28323C]/50 bg-[#0C1117] py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between  text-[#E85D3F] ">
             <SectionHeading
               eyebrow="Selected work"
               title="Ideas shaped into useful, memorable interfaces."

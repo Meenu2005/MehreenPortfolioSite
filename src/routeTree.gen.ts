@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as ReviewTokenRouteImport } from './routes/review/$token'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const WorkRoute = WorkRouteImport.update({
   path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReviewTokenRoute = ReviewTokenRouteImport.update({
+  id: '/review/$token',
+  path: '/review/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/connect': typeof ConnectRoute
   '/work': typeof WorkRoute
+  '/review/$token': typeof ReviewTokenRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/connect': typeof ConnectRoute
   '/work': typeof WorkRoute
+  '/review/$token': typeof ReviewTokenRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,21 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/connect': typeof ConnectRoute
   '/work': typeof WorkRoute
+  '/review/$token': typeof ReviewTokenRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/admin' | '/connect' | '/work'
+  fullPaths: '/' | '/about' | '/admin' | '/connect' | '/work' | '/review/$token'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/admin' | '/connect' | '/work'
-  id: '__root__' | '/' | '/about' | '/admin' | '/connect' | '/work'
+  to: '/' | '/about' | '/admin' | '/connect' | '/work' | '/review/$token'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/connect'
+    | '/work'
+    | '/review/$token'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +93,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   ConnectRoute: typeof ConnectRoute
   WorkRoute: typeof WorkRoute
+  ReviewTokenRoute: typeof ReviewTokenRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +133,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/review/$token': {
+      id: '/review/$token'
+      path: '/review/$token'
+      fullPath: '/review/$token'
+      preLoaderRoute: typeof ReviewTokenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +149,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   ConnectRoute: ConnectRoute,
   WorkRoute: WorkRoute,
+  ReviewTokenRoute: ReviewTokenRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
