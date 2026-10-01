@@ -7,6 +7,7 @@ export type Project = {
   technologies: string[];
   liveUrl?: string;
   githubUrl?: string;
+  caseStudySlug: string;
   accent: "blue" | "wine" | "moss";
   link: string;
   logo?: string;
@@ -14,6 +15,7 @@ export type Project = {
     clientName: string;
     profilePhoto: string;
     text: string;
+
   };
 };
 import zayvoLogo from "@/assets/zayvo.png";
@@ -47,6 +49,7 @@ export const projects: [Project, ...Project[]] = [
       "A premium website built for a short-form video editing agency to showcase its work, services, and brand.",
     problem:
       "Zayvo needed a professional digital presence that could communicate its services clearly while matching its premium, modern brand identity.",
+    caseStudySlug: "zayvo-media",
     solution:
       "Designed and developed a responsive website with custom layouts, interactive sections, video showcases, animations, and a production deployment with custom domain and SSL.",
     technologies: ["HTML", "CSS", "TypeScript", "Netlify"],
@@ -59,7 +62,9 @@ export const projects: [Project, ...Project[]] = [
     category: "Client work",
     logo: softro,
     description:
-      "A complete business website designed and developed from the initial structure through production.",
+      "A complete business website designed and developed from the initial structure through production."
+    ,
+    caseStudySlug: "softro-solutions",
     problem:
       "The business needed a professional online presence that clearly presented its services and worked smoothly across desktop and mobile.",
     solution:
@@ -75,6 +80,7 @@ export const projects: [Project, ...Project[]] = [
     logo: forum,
     description:
       "A customized community forum experience built around the client's requirements and visual direction.",
+    caseStudySlug: "forumotion-ashen-isles",
     problem:
       "The client needed a more customized forum experience with a distinct visual identity, responsive layouts, and easier navigation.",
     solution:
@@ -90,6 +96,7 @@ export const projects: [Project, ...Project[]] = [
     logo: findit,
     description:
       "A full-stack lost and found platform for posting, discovering, and managing lost or found items.",
+    caseStudySlug: "findit",
     problem:
       "Users needed a simple way to publish lost or found items, search listings, and manage their posts.",
     solution:

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
@@ -14,7 +14,7 @@ import { db } from "@/firebase/config";
 
 import { portfolio, projects } from "@/data/portfolio";
 
-export const Route = createFileRoute("/work")({
+export const Route = createFileRoute("/work/")({
   head: () => ({
     meta: [
       {
@@ -200,7 +200,6 @@ function WorkPage() {
                                   />
                                 )}
 
-                                {/* Hide technology names on very small screens */}
                                 <span className="hidden text-[11px] font-medium text-[#B8BDB8] sm:inline">
                                   {technology}
                                 </span>
@@ -244,6 +243,22 @@ function WorkPage() {
                     <p className="mt-6 max-w-xl text-sm leading-7 text-[#A9ADA8] sm:text-base">
                       {project.description}
                     </p>
+
+                    {/* Case Study Button */}
+                    {project.caseStudySlug && (
+                      <div className="mt-6">
+                        <Link
+                          to="/work/$slug"
+                          params={{
+                            slug: project.caseStudySlug,
+                          }}
+                          className="inline-flex items-center gap-2 rounded-full border border-[#E85D3F]/60 bg-[#E85D3F] px-4 py-2.5 text-xs font-bold text-[#101711] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#E6D2B5] hover:text-[#101711]"
+                        >
+                          View Case Study
+                          <ArrowUpRight className="size-3.5" />
+                        </Link>
+                      </div>
+                    )}
                   </div>
 
                   {/* Bottom / Client Review */}
