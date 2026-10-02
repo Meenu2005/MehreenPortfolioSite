@@ -119,7 +119,8 @@ function WorkPage() {
       <section className="border-b border-[#28323C]/50">
         <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8 sm:py-28">
           <div className="text-center">
-            <p className="mb-5 text-xs font-bold uppercase tracking-[0.22em] text-[#dc651b]">
+            {/* Sentence case instead of long all-caps */}
+            <p className="mb-5 text-sm font-semibold tracking-[0.18em] text-[#dc651b]">
               Work / 03
             </p>
 
@@ -127,7 +128,7 @@ function WorkPage() {
               Selected projects.
             </h1>
 
-            <p className="mt-7 text-base leading-7 text-[#B8BDB8] sm:text-lg sm:leading-8">
+            <p className="mx-auto mt-7 max-w-3xl text-base leading-7 text-[#B8BDB8] sm:text-lg sm:leading-8">
               A selection of websites and applications I have designed,
               developed, customized, and brought to production.
             </p>
@@ -140,7 +141,6 @@ function WorkPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-6 lg:grid-cols-2">
             {projects.map((project, index) => {
-              // Find only the approved review belonging to this project.
               const review = approvedReviews.find(
                 (item) =>
                   item.projectTitle === project.title
@@ -149,7 +149,7 @@ function WorkPage() {
               return (
                 <article
                   key={`${project.title}-${index}`}
-                  className="group relative flex min-h-[430px] flex-col overflow-hidden rounded-[28px] border border-[#28323C]/70 bg-[#0C1117] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#dc651b] sm:p-9"
+                  className="group relative flex min-h-[470px] flex-col overflow-hidden rounded-[28px] border border-[#28323C]/70 bg-[#0C1117] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#dc651b] sm:p-9"
                 >
                   {/* Subtle background glow */}
                   <div
@@ -159,7 +159,7 @@ function WorkPage() {
 
                   {/* Top */}
                   <div className="relative z-10">
-                    <div className="flex items-center justify-between gap-5">
+                    <div className="flex items-start justify-between gap-6">
                       {/* Website logo */}
                       <a
                         href={project.link}
@@ -180,7 +180,7 @@ function WorkPage() {
                       </a>
 
                       {/* Technologies + Number */}
-                      <div className="flex min-w-0 flex-1 items-center justify-end gap-2 sm:gap-4">
+                      <div className="flex min-w-0 flex-1 items-start justify-end gap-4 sm:gap-6">
                         {/* Technologies */}
                         <div className="flex min-w-0 flex-wrap justify-end gap-1.5 sm:gap-2">
                           {project.technologies.map((technology) => {
@@ -196,11 +196,11 @@ function WorkPage() {
                                   <img
                                     src={icon}
                                     alt=""
-                                    className="size-3.5 shrink-0 opacity-100"
+                                    className="size-3.5 shrink-0"
                                   />
                                 )}
 
-                                <span className="hidden text-[11px] font-medium text-[#B8BDB8] sm:inline">
+                                <span className="hidden text-xs font-medium text-[#B8BDB8] sm:inline">
                                   {technology}
                                 </span>
                               </div>
@@ -209,7 +209,7 @@ function WorkPage() {
                         </div>
 
                         {/* Project Number */}
-                        <span className="shrink-0 font-mono text-[10px] tracking-[0.15em] text-[#59635C] sm:text-xs sm:tracking-[0.2em]">
+                        <span className="mt-1 shrink-0 font-mono text-xs tracking-[0.15em] text-[#59635C] sm:tracking-[0.2em]">
                           0{index + 1}
                         </span>
                       </div>
@@ -217,36 +217,43 @@ function WorkPage() {
 
                     {/* Project name */}
                     <div className="mt-8">
-                      <div className="mb-3 flex items-center gap-3">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#87917F]">
-                          {project.category}
+                      {/* Consistent metadata label */}
+                      <div className="mb-3 flex min-h-5 items-center gap-3">
+                        <span className="text-xs font-semibold tracking-[0.16em] text-[#87917F]">
+                          {project.category || "Project"}
                         </span>
 
-                        <span className="size-1 rounded-full bg-[#E85D3F]" />
+                        <span
+                          className="size-1 shrink-0 rounded-full bg-[#E85D3F]"
+                          aria-hidden="true"
+                        />
                       </div>
 
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group/title inline-flex items-center gap-3"
-                      >
-                        <h2 className="font-display text-3xl font-semibold text-[#E6D2B5] transition-colors duration-300 group-hover/title:text-[#E85D3F] sm:text-4xl">
-                          {project.title}
-                        </h2>
+                      {/* Fixed title area so buttons align */}
+                      <div className="flex min-h-[92px] items-start">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group/title inline-flex items-start gap-3"
+                        >
+                          <h2 className="font-display text-3xl font-semibold leading-tight text-[#E6D2B5] transition-colors duration-300 group-hover/title:text-[#E85D3F] sm:text-4xl">
+                            {project.title}
+                          </h2>
 
-                        <ArrowUpRight className="size-5 text-[#68716B] transition-all duration-300 group-hover/title:-translate-y-1 group-hover/title:translate-x-1 group-hover/title:text-[#E85D3F]" />
-                      </a>
+                          <ArrowUpRight className="mt-1 size-5 shrink-0 text-[#68716B] transition-all duration-300 group-hover/title:-translate-y-1 group-hover/title:translate-x-1 group-hover/title:text-[#E85D3F]" />
+                        </a>
+                      </div>
                     </div>
 
                     {/* Description */}
-                    <p className="mt-6 max-w-xl text-sm leading-7 text-[#A9ADA8] sm:text-base">
+                    <p className="mt-5 max-w-xl text-sm leading-7 text-[#A9ADA8] sm:text-base">
                       {project.description}
                     </p>
 
                     {/* Case Study Button */}
-                    {project.caseStudySlug && (
-                      <div className="mt-6">
+                    <div className="mt-6 min-h-[42px]">
+                      {project.caseStudySlug && (
                         <Link
                           to="/work/$slug"
                           params={{
@@ -257,25 +264,23 @@ function WorkPage() {
                           View Case Study
                           <ArrowUpRight className="size-3.5" />
                         </Link>
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </div>
 
                   {/* Bottom / Client Review */}
                   <div className="relative z-10 mt-auto pt-10">
                     <div className="mb-6 h-px w-full bg-[#28323C]/70" />
 
-                    {/* Approved Client Review */}
                     {review && (
                       <div className="rounded-2xl border border-[#28323C]/70 bg-[#101711]/60 p-5">
                         <div className="mb-4 flex items-center gap-2">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E85D3F]">
-                            Client Review
+                          <span className="text-xs font-semibold tracking-[0.16em] text-[#E85D3F]">
+                            Client review
                           </span>
                         </div>
 
                         <div className="flex items-start gap-4">
-                          {/* Client profile photo */}
                           {review.profilePhoto ? (
                             <img
                               src={review.profilePhoto}
@@ -313,9 +318,24 @@ function WorkPage() {
       {/* Bottom statement */}
       <section className="border-t border-[#28323C]/50 bg-[#0C1117] py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <p className="max-w-3xl font-display text-4xl font-semibold leading-tight text-[#E6D2B5] sm:text-5xl">
-            From structure and interaction to the final deployed experience.
-          </p>
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold tracking-[0.16em] text-[#E85D3F]">
+              Have a project in mind?
+            </p>
+
+            <p className="mt-5 font-display text-4xl font-semibold leading-tight text-[#E6D2B5] sm:text-5xl">
+              From structure and interaction to the final deployed experience.
+            </p>
+
+            {/* Clear next step */}
+            <Link
+              to="/connect"
+              className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#E85D3F]/60 bg-[#E85D3F] px-5 py-3 text-sm font-bold text-[#101711] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#E6D2B5]"
+            >
+              Let&apos;s connect
+              <ArrowUpRight className="size-4" />
+            </Link>
+          </div>
         </div>
       </section>
     </main>

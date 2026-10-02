@@ -1,6 +1,5 @@
-
-import { createFileRoute } from "@tanstack/react-router";
-import { LockKeyhole, Send } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { LockKeyhole, Send, Undo2 } from "lucide-react";
 import { Linkedin, Mail } from "lucide-react";
 import { FaRedditAlien } from "react-icons/fa";
 import {
@@ -9,8 +8,6 @@ import {
   useState,
   type FormEvent,
 } from "react";
-import { Link } from "@tanstack/react-router";
-import { Undo2 } from "lucide-react";
 
 import { ActionButton } from "@/components/portfolio/Button";
 
@@ -157,61 +154,116 @@ function ConnectPage() {
     <main className="flex min-h-screen flex-col bg-[#101312] text-[#F5EFE6]">
       {/* Social Icons */}
       <div
-        style={{
-          position: "fixed",
-          left: "20px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "14px",
-          zIndex: 50,
-          
-         
-        }}
+        className="
+          fixed
+          left-10
+          top-1/2
+          z-50
+          flex
+          -translate-y-1/2
+          flex-col
+          items-center
+          gap-4
+          sm:left-14
+        "
+        aria-label="Social links"
       >
         <a
-          href="YOUR_REDDIT_LINK"
+          href="https://www.reddit.com/user/meenu-code/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#dc651b] transition-opacity hover:opacity-60"
+          className="
+            text-[#87917F]
+            transition-colors
+            hover:text-[#E6D2B5]
+            focus-visible:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-[#E85D3F]
+            focus-visible:ring-offset-2
+            focus-visible:ring-offset-[#101312]
+          "
           aria-label="Reddit"
         >
-          <FaRedditAlien size={38} />
+          <FaRedditAlien size={36} />
         </a>
 
         <a
-          href="YOUR_LINKEDIN_LINK"
+          href="https://www.linkedin.com/in/mehreenrao"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#dc651b] transition-opacity hover:opacity-60"
+          className="
+            text-[#87917F]
+            transition-colors
+            hover:text-[#E6D2B5]
+            focus-visible:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-[#E85D3F]
+            focus-visible:ring-offset-2
+            focus-visible:ring-offset-[#101312]
+          "
           aria-label="LinkedIn"
         >
-          <Linkedin size={38} />
+          <Linkedin size={36} />
         </a>
 
         <a
-          href="mailto:YOUR_EMAIL@gmail.com"
-          className="text-[#dc651b] transition-opacity hover:opacity-60"
+          href="mailto:mehreenrao220117@gmail.com"
+          className="
+            text-[#87917F]
+            transition-colors
+            hover:text-[#E6D2B5]
+            focus-visible:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-[#E85D3F]
+            focus-visible:ring-offset-2
+            focus-visible:ring-offset-[#101312]
+          "
           aria-label="Email"
         >
-          <Mail size={38} />
+          <Mail size={36} />
         </a>
       </div>
 
       {/* Chat Header */}
       <header className="shrink-0 border-b border-[#334A35]/60 bg-[#171B18]">
-        <div className=" flex h-[76px] w-full max-w-4xl items-center px-5 sm:px-7">
-          <div className="flex items-center gap-3">
-            <div>
-              <Link to="/work" className="inline-flex items-center">
-                <Undo2 size={24} strokeWidth={2} />
-              </Link>
-            </div>
+        <div
+          className="
+            flex
+            h-[76px]
+            w-full
+            max-w-4xl
+            items-center
+            pl-10
+            pr-5
+            sm:pl-14
+            sm:pr-7
+          "
+        >
+          <div className="flex w-full items-center gap-3">
+            {/* Back button */}
+            <Link
+              to="/work"
+              aria-label="Back to work"
+              className="
+                inline-flex
+                shrink-0
+                items-center
+                justify-center
+                text-[#F5EFE6]
+                transition-colors
+                hover:text-[#E85D3F]
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[#E85D3F]
+                focus-visible:ring-offset-2
+                focus-visible:ring-offset-[#171B18]
+              "
+            >
+              <Undo2 size={24} strokeWidth={2} />
+            </Link>
 
             {/* Mehreen avatar */}
-            <div className="relative">
+            <div className="relative shrink-0">
               <div className="grid size-11 place-items-center overflow-hidden rounded-full bg-[#641F32]">
                 <img
                   src={avatarIdle}
@@ -220,15 +272,30 @@ function ConnectPage() {
                 />
               </div>
 
-              <span className="absolute bottom-0 right-0 size-3 rounded-full border-2 border-[#171B18] bg-[#dc651b]" />
+              <span
+                className="
+                  absolute
+                  bottom-0
+                  right-0
+                  size-3
+                  rounded-full
+                  border-2
+                  border-[#171B18]
+                  bg-[#dc651b]
+                "
+                aria-label="Online"
+              />
             </div>
 
-            <div>
-              <h1 className="text-[15px] font-semibold text-[#F5EFE6]">
+            {/* Name + status */}
+            <div className="min-w-0">
+              <h1 className="text-base font-semibold leading-5 text-[#F5EFE6]">
                 {portfolio.name}
               </h1>
 
-              <p className="mt-0.5 text-xs text-[#87917F]">
+              {/* ISSUE 1 FIX:
+                  14px instead of 11px */}
+              <p className="mt-0.5 text-sm leading-5 text-[#87917F]">
                 Online · Usually replies within a day
               </p>
             </div>
@@ -239,7 +306,6 @@ function ConnectPage() {
       {/* Chat */}
       <section className="flex min-h-0 flex-1 justify-center">
         <div className="flex min-h-[calc(100vh-76px)] w-full max-w-4xl flex-col">
-
           {/* Messages */}
           <div
             className="flex-1 overflow-y-auto px-4 py-6 sm:px-7 sm:py-8"
@@ -247,109 +313,128 @@ function ConnectPage() {
               scrollbarWidth: "thin",
             }}
           >
-            {/* Intro message */}
-            <div className="flex items-end gap-2">
-              <div className="hidden size-7 shrink-0 overflow-hidden rounded-full bg-[#641F32] sm:block">
-                <img
-                  src={avatarIdle}
-                  alt=""
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
-
-              <div className="relative max-w-[82%] sm:max-w-md">
-                <div className="chat-blob chat-blob-me px-5 py-3.5">
-                  <p className="text-[14px] leading-6 text-[#FFF7EC]">
-                    Hi — thanks for stopping by 👋
-                  </p>
-
-                  <p className="mt-1.5 text-[13px] leading-5 text-[#D8D2C8]">
-                    Have a project, question, or idea? Drop me a message here
-                    and we can continue the conversation.
-                  </p>
-
-                  <div className="mt-1 text-right text-[10px] text-[#9B9288]">
-                    Now
-                  </div>
+            {/* Center conversation content */}
+            <div className="mx-auto w-full max-w-[800px]">
+              {/* Intro message */}
+              <div className="flex items-end gap-2">
+                <div className="hidden size-7 shrink-0 overflow-hidden rounded-full bg-[#641F32] sm:block">
+                  <img
+                    src={avatarIdle}
+                    alt=""
+                    className="h-full w-full object-cover object-top"
+                  />
                 </div>
-              </div>
-            </div>
 
-            {/* Sign in message */}
-            {showGate && (
-              <div className="my-5 flex justify-center">
-                <div className="flex max-w-sm items-center gap-3 rounded-2xl border border-[#A9485D]/50 bg-[#641F32]/20 px-4 py-3">
-                  <div className="grid size-9 shrink-0 place-items-center rounded-full bg-[#641F32]/40">
-                    <LockKeyhole className="size-4 text-[#FFB89A]" />
-                  </div>
-
-                  <div>
-                    <p className="text-xs font-semibold text-[#F5EFE6]">
-                      One quick sign-in
+                <div className="relative max-w-[82%] sm:max-w-md">
+                  <div className="chat-blob chat-blob-me px-5 py-3.5">
+                    <p className="text-[14px] leading-6 text-[#FFF7EC]">
+                     Hey, glad you’re here!
                     </p>
 
-                    <p className="mt-0.5 text-[11px] leading-4 text-[#B8B1A8]">
-                      Sign in with Google to send your message securely.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Messages */}
-            {messages.map((message) => {
-              const isUserMessage = message.sender === "user";
-
-              return (
-                <div
-                  key={message.id}
-                  className={`mt-4 flex ${
-                    isUserMessage ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  <div
-                    className={`relative max-w-[82%] sm:max-w-md ${
-                      isUserMessage
-                        ? "chat-blob chat-blob-user px-5 py-3"
-                        : "chat-blob chat-blob-me px-5 py-3"
-                    }`}
-                  >
-                    <p
-                      className={`text-[14px] leading-6 ${
-                        isUserMessage
-                          ? "text-[#172017]"
-                          : "text-[#FFF7EC]"
-                      }`}
-                    >
-                      {message.text}
+                    <p className="mt-1.5 text-[13px] leading-5 text-[#D8D2C8]">
+                     I’m always open to talking about frontend development, new projects, ideas, or simply having a good conversation.
                     </p>
 
-                    <div
-                      className={`mt-1 flex items-center gap-1.5 text-[10px] ${
-                        isUserMessage
-                          ? "justify-end text-[#536052]"
-                          : "justify-start text-[#9B9288]"
-                      }`}
-                    >
-                      <span>
-                        {isUserMessage ? "You" : portfolio.name}
-                      </span>
-
-                      {isUserMessage && <span>✓</span>}
+                    <div className="mt-1 text-right text-[10px] text-[#9B9288]">
+                      Now
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
 
-            <div ref={messagesEndRef} />
+              {/* Sign in message */}
+              {showGate && (
+                <div className="my-5 flex justify-center">
+                  <div className="flex max-w-sm items-center gap-3 rounded-2xl border border-[#A9485D]/50 bg-[#641F32]/20 px-4 py-3">
+                    <div className="grid size-9 shrink-0 place-items-center rounded-full bg-[#641F32]/40">
+                      <LockKeyhole className="size-4 text-[#FFB89A]" />
+                    </div>
+
+                    <div>
+                      <p className="text-xs font-semibold text-[#F5EFE6]">
+                        One quick sign-in
+                      </p>
+
+                      <p className="mt-0.5 text-[11px] leading-4 text-[#B8B1A8]">
+                        Sign in with Google to send your message securely.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Messages */}
+              {messages.map((message) => {
+                const isUserMessage = message.sender === "user";
+
+                return (
+                  <div
+                    key={message.id}
+                    className={`mt-4 flex ${
+                      isUserMessage ? "justify-end" : "justify-start"
+                    }`}
+                  >
+                    <div
+                      className={`relative max-w-[82%] sm:max-w-md ${
+                        isUserMessage
+                          ? "chat-blob chat-blob-user px-5 py-3"
+                          : "chat-blob chat-blob-me px-5 py-3"
+                      }`}
+                    >
+                      <p
+                        className={`text-[14px] leading-6 ${
+                          isUserMessage
+                            ? "text-[#172017]"
+                            : "text-[#FFF7EC]"
+                        }`}
+                      >
+                        {message.text}
+                      </p>
+
+                      <div
+                        className={`mt-1 flex items-center gap-1.5 text-[10px] ${
+                          isUserMessage
+                            ? "justify-end text-[#536052]"
+                            : "justify-start text-[#9B9288]"
+                        }`}
+                      >
+                        <span>
+                          {isUserMessage ? "You" : portfolio.name}
+                        </span>
+
+                        {isUserMessage && <span>✓</span>}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+
+              <div ref={messagesEndRef} />
+            </div>
           </div>
 
           {/* Message composer */}
           <div className="shrink-0 px-4 py-4 sm:px-7">
             <form
               onSubmit={submit}
-              className="flex items-end gap-2 rounded-[22px] border border-[#536052] bg-[#202720] p-2 shadow-[0_8px_30px_rgba(0,0,0,0.22)] transition-all focus-within:border-[#dc651b] focus-within:bg-[#252D25] focus-within:shadow-[0_8px_35px_rgba(100,31,50,0.16)]"
+              className="
+                mx-auto
+                flex
+                w-full
+                max-w-[800px]
+                items-end
+                gap-2
+                rounded-[22px]
+                border
+                border-[#536052]
+                bg-[#202720]
+                p-2
+                shadow-[0_8px_30px_rgba(0,0,0,0.22)]
+                transition-all
+                focus-within:border-[#dc651b]
+                focus-within:bg-[#252D25]
+                focus-within:shadow-[0_8px_35px_rgba(100,31,50,0.16)]
+              "
             >
               <label className="sr-only" htmlFor="message">
                 Write a message
@@ -370,21 +455,53 @@ function ConnectPage() {
                   }
                 }}
                 placeholder="Write your message here..."
-                className="max-h-32 min-h-11 flex-1 resize-none bg-transparent px-3 py-2.5 text-sm text-[#FFF9F1] outline-none placeholder:text-[#AAAFA6]"
+                className="
+                  max-h-32
+                  min-h-11
+                  flex-1
+                  resize-none
+                  bg-transparent
+                  px-3
+                  py-2.5
+                  text-sm
+                  text-[#FFF9F1]
+                  outline-none
+                  placeholder:text-[#AAAFA6]
+                "
               />
 
               <ActionButton
                 type="submit"
-               
                 aria-label="Send message"
-                className="grid size-11 shrink-0 place-items-center rounded-full bg-[#dc651b] p-0 text-white shadow-md transition-transform hover:scale-105 hover:bg-[#C15C70] active:scale-95"
+                className="
+                  grid
+                  size-11
+                  shrink-0
+                  place-items-center
+                  rounded-full
+                  bg-[#dc651b]
+                  p-0
+                  text-white
+                  shadow-md
+                  transition-transform
+                  hover:scale-105
+                  hover:bg-[#C15C70]
+                  active:scale-95
+                  focus-visible:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-[#E6D2B5]
+                  focus-visible:ring-offset-2
+                  focus-visible:ring-offset-[#202720]
+                "
               >
                 <Send className="size-4" />
                 <span className="sr-only">Send</span>
               </ActionButton>
             </form>
 
-            <p className="mt-2 text-center text-[10px] text-[#727A72]">
+            {/* ISSUE 2 FIX:
+                12px instead of 10px */}
+            <p className="mx-auto mt-2 max-w-[800px] text-center text-xs leading-5 text-[#727A72]">
               Messages are private and connected to your Google account.
             </p>
           </div>
@@ -407,11 +524,6 @@ function ConnectPage() {
           box-shadow: 0 7px 22px rgba(0, 0, 0, 0.16);
         }
 
-        /* Small thought bubble dots for incoming messages */
-       
-
-      
-
         /* User message */
         .chat-blob-user {
           background: #D8E6D4;
@@ -420,10 +532,6 @@ function ConnectPage() {
           box-shadow: 0 7px 22px rgba(0, 0, 0, 0.12);
         }
 
-        /* Small thought bubble dots for user messages */
-       
-
-       
         /* More organic variations */
         .chat-blob-me:nth-child(3n) {
           border-radius: 29px 23px 28px 18px;
@@ -450,4 +558,3 @@ function ConnectPage() {
     </main>
   );
 }
-

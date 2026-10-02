@@ -50,7 +50,7 @@ function Index() {
           {/* Availability */}
           <div className="reveal-up mb-8">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#dc651b]">
-              <span className="mr-2 inline-block size-1.5 rounded-full bg-[#E85D3F] align-middle" />
+              <span className="mr-2 inline-block size-2.5 rounded-full bg-[#E85D3F] align-middle" />
               {portfolio.availability}
             </p>
           </div>

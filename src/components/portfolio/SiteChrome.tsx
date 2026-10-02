@@ -135,7 +135,7 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="flex items-center gap-2 rounded-full bg-[#641F32] px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-[#A9485D]"
+                className="flex items-center gap-2 rounded bg-[#dc651b] px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-[#A9485D]"
               >
                 <LogOut className="size-4" />
                 Logout

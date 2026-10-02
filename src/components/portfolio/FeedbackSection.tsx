@@ -308,7 +308,7 @@ export function FeedbackSection() {
           {/* Small Rating */}
           <div className="text-center">
 
-            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#87917F]">
+            <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-[#87917F]">
               Portfolio rating
             </p>
 
@@ -377,7 +377,7 @@ export function FeedbackSection() {
                 type="button"
                 disabled={!selectedRating || submittingRating}
                 onClick={submitRating}
-                className="mt-4 inline-flex min-h-9 items-center justify-center gap-2 rounded-full bg-[#dc651b] px-5 text-xs font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#E85D3F] disabled:pointer-events-none disabled:opacity-40"
+                className="mt-4 inline-flex min-h-9 items-center justify-center gap-2 rounded bg-[#dc651b] px-5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#E85D3F] disabled:pointer-events-none disabled:opacity-40"
               >
                 <Star className="size-3.5" />
                 {submittingRating ? "Saving..." : "Submit rating"}
@@ -396,7 +396,7 @@ export function FeedbackSection() {
           <div className="mt-20">
 
             <div className="text-center">
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#dc651b]">
+              <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-[#dc651b]">
                 Comments & suggestions
               </p>
 
@@ -432,7 +432,7 @@ export function FeedbackSection() {
                 </button>
               </div>
 
-              <div className="mt-2 flex justify-between px-1 text-[10px] text-[#59635C]">
+              <div className="mt-2 flex justify-between px-1 text-[12px] text-[#59635C]">
                 <span>
                   {user
                     ? `Commenting as ${user.displayName || "you"}`
