@@ -952,7 +952,7 @@ useEffect(() => {
     </div>
 
     {/* Generate Link */}
-    <div className="rounded-2xl border border-black/10 bg-white/50 p-6">
+    <div className="rounded-2xl border border-black/10 bg-background/50 p-6">
       <h3 className="text-lg font-semibold">
         Generate Private Review Link
       </h3>
@@ -975,7 +975,7 @@ useEffect(() => {
               setGeneratedLink("");
               setLinkCopied(false);
             }}
-            className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 outline-none"
+            className="w-full rounded-xl border border-black/10 bg-background px-4 py-3 outline-none"
           >
             {projects.map((project) => (
               <option key={project.title} value={project.title}>
@@ -998,7 +998,7 @@ useEffect(() => {
       </div>
 
       {generatedLink && (
-        <div className="mt-5 rounded-xl border border-black/10 bg-black/[0.03] p-4">
+        <div className="mt-5 rounded-xl border border-black/10 bg-background/[0.03] p-4">
           <p className="mb-2 text-sm font-medium">
             Private review link
           </p>
@@ -1008,7 +1008,7 @@ useEffect(() => {
               type="text"
               value={generatedLink}
               readOnly
-              className="min-w-0 flex-1 rounded-lg border border-black/10 bg-white px-3 py-2 text-sm"
+              className="min-w-0 flex-1 rounded-lg border border-black/10 bg-background px-3 py-2 text-sm"
             />
 
             <button
@@ -1028,7 +1028,7 @@ useEffect(() => {
     </div>
 
      {/* Existing Links */}
-    <div className="rounded-2xl border border-black/10 bg-white/50 p-6">
+    <div className="rounded-2xl border border-black/10 bg-background/50 p-6">
       <h3 className="text-lg font-semibold">
         Generated Links
       </h3>
@@ -1042,7 +1042,7 @@ useEffect(() => {
           {reviewLinks.map((link) => (
             <div
               key={link.id}
-              className="rounded-xl border border-black/10 bg-white p-4"
+              className="rounded-xl border border-black/10 bg-background p-4"
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -1081,7 +1081,7 @@ useEffect(() => {
     </div>
 
     {/* Client Reviews */}
-    <div className="rounded-2xl border border-black/10 bg-white/50 p-6">
+    <div className="rounded-2xl border border-black/10 bg-background/50 p-6">
       <div>
         <h3 className="text-lg font-semibold">
           Client Reviews
@@ -1101,7 +1101,7 @@ useEffect(() => {
           {projectReviews.map((review) => (
             <div
               key={review.id}
-              className="rounded-2xl border border-black/10 bg-white p-5"
+              className="rounded-2xl border border-black/10 bg-background p-5"
             >
               <div className="flex flex-col gap-5 sm:flex-row">
                 

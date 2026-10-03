@@ -38,7 +38,7 @@ export const Route = createFileRoute("/about")({
 
 function AboutPage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-black text-[#F5EFE6]">
+    <main className="min-h-screen overflow-hidden bg-background text-[#F5EFE6]">
       {/* Intro */}
       <section className="relative border-b border-[#28323C]/50">
         <div className="pointer-events-none absolute left-1/2 top-20 size-72 -translate-x-1/2 rounded-full bg-[#641F32]/10 blur-[120px]" />
@@ -62,7 +62,7 @@ function AboutPage() {
       </section>
 
       {/* Brand statement */}
-      <section className="border-b border-[#28323C]/50 bg-[#0C1117]">
+      <section className="border-b border-[#28323C]/50bg-surface-card">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
           <div className="grid gap-10 lg:grid-cols-[0.3fr_1fr] lg:gap-16">
             <div className="flex items-start gap-3 text-[#E85D3F]">
@@ -73,7 +73,7 @@ function AboutPage() {
               </span>
             </div>
 
-            <p className="max-w-4xl font-display text-[32px] font-medium leading-tight text-[#E6D2B5] sm:text-[48px]">
+            <p className="max-w-4xl font-display text-[32px] font-medium leading-tight text-theme-text sm:text-[48px]">
               I care about the space between{" "}
               <span className="text-[#E85D3F]">good code</span> and a
               website that actually feels right.
@@ -83,7 +83,7 @@ function AboutPage() {
       </section>
 
       {/* What I bring */}
-      <section className="border-b border-[#28323C]/50 bg-black">
+      <section className="border-b border-[#28323C]/50 bg-background">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
           <div className="mb-12 flex items-end justify-between gap-6">
             <div>
@@ -91,7 +91,7 @@ function AboutPage() {
                 The toolkit
               </p>
 
-              <h2 className="font-display text-[32px] font-semibold text-[#E6D2B5] sm:text-[48px]">
+              <h2 className="font-display text-[32px] font-semibold text-theme-text sm:text-[48px]">
                 What I bring to a project.
               </h2>
             </div>
@@ -101,7 +101,7 @@ function AboutPage() {
 
           <div className="grid gap-4 md:grid-cols-2">
             {/* React */}
-            <div className="group rounded-3xl border border-[#28323C]/70 bg-[#0C1117] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#641F32]">
+            <div className="group rounded-3xl border border-[#28323C]/70bg-surface-card p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#641F32]">
               <div className="flex items-start justify-between">
                 <div className="grid size-12 place-items-center rounded-2xl bg-[#641F32]/15 text-[#E85D3F]">
                   <Code2 className="size-5" />
@@ -110,7 +110,7 @@ function AboutPage() {
                 <span className="text-sm text-[#59635C]">01</span>
               </div>
 
-              <h3 className="mt-8 text-xl font-semibold text-[#E6D2B5]">
+              <h3 className="mt-8 text-xl font-semibold text-theme-text">
                 Frontend development
               </h3>
 
@@ -122,7 +122,7 @@ function AboutPage() {
             </div>
 
             {/* UI */}
-            <div className="group rounded-3xl border border-[#28323C]/70 bg-[#0C1117] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#641F32]">
+            <div className="group rounded-3xl border border-[#28323C]/70bg-surface-card p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#641F32]">
               <div className="flex items-start justify-between">
                 <div className="grid size-12 place-items-center rounded-2xl bg-[#641F32]/15 text-[#E85D3F]">
                   <Layers3 className="size-5" />
@@ -131,7 +131,7 @@ function AboutPage() {
                 <span className="text-sm text-[#59635C]">02</span>
               </div>
 
-              <h3 className="mt-8 text-xl font-semibold text-[#E6D2B5]">
+              <h3 className="mt-8 text-xl font-semibold text-theme-text">
                 Responsive UI
               </h3>
 
@@ -142,7 +142,7 @@ function AboutPage() {
             </div>
 
             {/* Accessible */}
-            <div className="group rounded-3xl border border-[#28323C]/70 bg-[#0C1117] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#641F32]">
+            <div className="group rounded-3xl border border-[#28323C]/70bg-surface-card p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#641F32]">
               <div className="flex items-start justify-between">
                 <div className="grid size-12 place-items-center rounded-2xl bg-[#641F32]/15 text-[#E85D3F]">
                   <Sparkles className="size-5" />
@@ -151,7 +151,7 @@ function AboutPage() {
                 <span className="text-sm text-[#59635C]">03</span>
               </div>
 
-              <h3 className="mt-8 text-xl font-semibold text-[#E6D2B5]">
+              <h3 className="mt-8 text-xl font-semibold text-theme-text">
                 Thoughtful details
               </h3>
 
@@ -162,7 +162,7 @@ function AboutPage() {
             </div>
 
             {/* Client */}
-            <div className="group rounded-3xl border border-[#28323C]/70 bg-[#0C1117] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#641F32]">
+            <div className="group rounded-3xl border border-[#28323C]/70bg-surface-card p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#641F32]">
               <div className="flex items-start justify-between">
                 <div className="grid size-12 place-items-center rounded-2xl bg-[#641F32]/15 text-[#E85D3F]">
                   <BriefcaseBusiness className="size-5" />
@@ -171,7 +171,7 @@ function AboutPage() {
                 <span className="text-sm text-[#59635C]">04</span>
               </div>
 
-              <h3 className="mt-8 text-xl font-semibold text-[#E6D2B5]">
+              <h3 className="mt-8 text-xl font-semibold text-theme-text">
                 From idea to launch
               </h3>
 
@@ -185,7 +185,7 @@ function AboutPage() {
       </section>
 
       {/* Background / Education */}
-      <section className="border-b border-[#28323C]/50 bg-[#0C1117]">
+      <section className="border-b border-[#28323C]/50bg-surface-card">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
           {/* Reduced column disparity + gap so label and education feel connected */}
           <div className="grid gap-10 lg:grid-cols-[minmax(220px,0.5fr)_1fr] lg:items-start lg:gap-12">
@@ -221,14 +221,14 @@ function AboutPage() {
       </section>
 
       {/* Experience */}
-      <section className="border-b border-[#28323C]/50 bg-black">
+      <section className="border-b border-[#28323C]/50 bg-background">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
           <div className="mb-14 max-w-2xl">
             <p className="text-sm font-semibold tracking-[0.15em] text-[#E85D3F]">
               Built through experience
             </p>
 
-            <h2 className="mt-4 font-myfont font-display text-[32px] font-semibold text-[#E6D2B5] sm:text-[48px]">
+            <h2 className="mt-4 font-myfont font-display text-[32px] font-semibold text-theme-text sm:text-[48px]">
               Things I have actually worked on.
             </h2>
           </div>
@@ -237,7 +237,7 @@ function AboutPage() {
             {portfolio.experience.map((item, index) => (
               <div
                 key={item}
-                className="relative overflow-hidden rounded-3xl border border-[#28323C]/70 bg-[#0C1117] p-7"
+                className="relative overflow-hidden rounded-3xl border border-[#28323C]/70bg-surface-card p-7"
               >
                 <span className="font-mono text-[32px] text-[#641F32]">
                   0{index + 1}
@@ -253,7 +253,7 @@ function AboutPage() {
       </section>
 
       {/* Technologies */}
-      <section className="border-b border-[#28323C]/50 bg-[#0C1117]">
+      <section className="border-b border-[#28323C]/50bg-surface-card">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
           {/* Heading and tags are now visually grouped instead of pushed apart */}
           <div className="flex flex-col gap-8">
@@ -262,7 +262,7 @@ function AboutPage() {
                 Current stack
               </p>
 
-              <h2 className="font-myfont mt-3 font-display text-[32px] font-semibold text-[#E6D2B5] sm:text-[48px]">
+              <h2 className="font-myfont mt-3 font-display text-[32px] font-semibold text-theme-text sm:text-[48px]">
                 Tools I build with.
               </h2>
             </div>
@@ -271,7 +271,7 @@ function AboutPage() {
               {portfolio.technologies.map((technology) => (
                 <span
                   key={technology}
-                  className="rounded-full border border-[#28323C] px-4 py-2 text-sm font-medium text-[#87917F] transition-colors hover:border-[#641F32] hover:text-[#E6D2B5]"
+                  className="rounded-full border border-[#28323C] px-4 py-2 text-sm font-medium text-[#87917F] transition-colors hover:border-[#641F32] hover:text-theme-text"
                 >
                   {technology}
                 </span>
@@ -282,13 +282,13 @@ function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-black py-24 sm:py-32">
+      <section className="bg-background py-24 sm:py-32">
         <div className="mx-auto max-w-5xl px-5 text-center sm:px-8">
           <p className="text-sm font-semibold tracking-[0.15em] text-[#E85D3F]">
             Next / Let's talk
           </p>
 
-          <h2 className="mt-5 font-display text-[32px] font-semibold leading-tight text-[#E6D2B5] sm:text-[48px]">
+          <h2 className="mt-5 font-display text-[32px] font-semibold leading-tight text-theme-text sm:text-[48px]">
             Have something worth building?
           </h2>
 

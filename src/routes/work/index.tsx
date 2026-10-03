@@ -8,6 +8,7 @@ import {
   where,
   type Timestamp,
 } from "firebase/firestore";
+import forumotionIcon from "@/assets/forumotion.png";
 
 // @ts-ignore -- Firebase config is shipped as JS.
 import { db } from "@/firebase/config";
@@ -57,7 +58,7 @@ const techIcons: Record<string, string> = {
   Express: "https://cdn.simpleicons.org/express",
   PostgreSQL: "https://cdn.simpleicons.org/postgresql",
   Netlify: "https://cdn.simpleicons.org/netlify",
-  Forumotion: "https://cdn.simpleicons.org/foro",
+ Forumotion: forumotionIcon,
 };
 
 type ApprovedReview = {
@@ -114,7 +115,7 @@ function WorkPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-black text-[#F5EFE6]">
+    <main className="min-h-screen bg-background text-[#F5EFE6]">
       {/* Page intro */}
       <section className="border-b border-[#28323C]/50">
         <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8 sm:py-28">
@@ -137,7 +138,7 @@ function WorkPage() {
       </section>
 
       {/* Projects */}
-      <section className="bg-black py-16 sm:py-24">
+      <section className="bg-background py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-6 lg:grid-cols-2">
             {projects.map((project, index) => {
@@ -149,7 +150,7 @@ function WorkPage() {
               return (
                 <article
                   key={`${project.title}-${index}`}
-                  className="group relative flex min-h-[470px] flex-col overflow-hidden rounded-[28px] border border-[#28323C]/70 bg-[#0C1117] p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#dc651b] sm:p-9"
+                  className="group relative flex min-h-[470px] flex-col overflow-hidden rounded-[28px] border border-[#28323C]/70bg-surface-card p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[#dc651b] sm:p-9"
                 >
                   {/* Subtle background glow */}
                   <div
@@ -190,7 +191,7 @@ function WorkPage() {
                               <div
                                 key={technology}
                                 title={technology}
-                                className="flex shrink-0 items-center gap-1.5 rounded-full border border-[#28323C] bg-[#101711] px-2 py-1.5 sm:px-2.5"
+                                className="flex shrink-0 items-center gap-1.5 rounded-full border border-[#28323C] bg-surface-input px-2 py-1.5 sm:px-2.5"
                               >
                                 {icon && (
                                   <img
@@ -200,7 +201,7 @@ function WorkPage() {
                                   />
                                 )}
 
-                                <span className="hidden text-xs font-medium text-[#B8BDB8] sm:inline">
+                                <span className="hidden text-xs font-medium sm:inline text-theme-text">
                                   {technology}
                                 </span>
                               </div>
@@ -237,7 +238,7 @@ function WorkPage() {
                           rel="noreferrer"
                           className="group/title inline-flex items-start gap-3"
                         >
-                          <h2 className="font-display text-3xl font-semibold leading-tight text-[#E6D2B5] transition-colors duration-300 group-hover/title:text-[#E85D3F] sm:text-4xl">
+                          <h2 className="font-display text-3xl font-semibold leading-tight text-theme-text transition-colors duration-300 group-hover/title:text-[#E85D3F] sm:text-4xl">
                             {project.title}
                           </h2>
 
@@ -300,7 +301,7 @@ function WorkPage() {
                               “{review.reviewText}”
                             </p>
 
-                            <p className="mt-3 text-xs font-semibold text-[#E6D2B5]">
+                            <p className="mt-3 text-xs font-semibold text-theme-text">
                               {review.clientName}
                             </p>
                           </div>
@@ -316,14 +317,14 @@ function WorkPage() {
       </section>
 
       {/* Bottom statement */}
-      <section className="border-t border-[#28323C]/50 bg-[#0C1117] py-20 sm:py-28">
+      <section className="border-t border-[#28323C]/50bg-surface-card py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold tracking-[0.16em] text-[#E85D3F]">
               Have a project in mind?
             </p>
 
-            <p className="mt-5 font-display text-4xl font-semibold leading-tight text-[#E6D2B5] sm:text-5xl">
+            <p className="mt-5 font-display text-4xl font-semibold leading-tight text-theme-text sm:text-5xl">
               From structure and interaction to the final deployed experience.
             </p>
 

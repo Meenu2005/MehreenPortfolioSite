@@ -283,13 +283,13 @@ export function FeedbackSection() {
   }, [commentsPaused, comments.length]);
 
   return (
-    <section className="border-b border-[#28323C]/50 bg-[#101312] py-24 sm:py-32">
+    <section className="border-b border-[#28323C]/50 bg-background py-24 sm:py-32">
       <div className="mx-auto w-full max-w-5xl px-5 sm:px-8">
 
         {/* Heading */}
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-5 text-xs font-bold uppercase tracking-[0.25em] text-[#dc651b]">
-            Feedback / 04
+            Feedback 
           </p>
 
           <h2 className="font-myfont text-5xl font-semibold leading-[0.95] text-[#E85D3F] sm:text-6xl lg:text-8xl">
@@ -313,7 +313,7 @@ export function FeedbackSection() {
             </p>
 
             <div className="mt-3 flex items-center justify-center gap-3">
-              <span className="font-myfont text-4xl font-semibold leading-none text-[#E6D2B5] sm:text-5xl">
+              <span className="font-myfont text-4xl font-semibold leading-none text-theme-text sm:text-5xl">
                 {averageRating ? averageRating.toFixed(1) : "—"}
               </span>
 
@@ -400,14 +400,14 @@ export function FeedbackSection() {
                 Comments & suggestions
               </p>
 
-              <h3 className="mt-3 font-myfont text-3xl font-semibold text-[#E6D2B5] sm:text-4xl">
+              <h3 className="mt-3 font-myfont text-3xl font-semibold text-theme-text sm:text-4xl">
                 What people are saying
               </h3>
             </div>
 
             {/* YouTube-style Comment Input */}
             <div className="mx-auto mt-8 max-w-3xl">
-              <div className="flex items-end gap-3 border-b border-[#536052] bg-[#171B18] px-4 py-3 transition-all focus-within:border-[#dc651b] sm:rounded-xl sm:border sm:px-5 sm:py-4">
+              <div className="flex items-end gap-3 border-b border-[#536052] bg-surface-input px-4 py-3 transition-all focus-within:border-[#dc651b] sm:rounded-xl sm:border sm:px-5 sm:py-4">
 
                 <textarea
                   value={comment}
@@ -456,7 +456,7 @@ export function FeedbackSection() {
               {comments.length === 0 ? (
                 <div className="flex h-full items-center justify-center text-center">
                   <div>
-                    <p className="text-sm font-medium text-[#E6D2B5]">
+                    <p className="text-sm font-medium text-theme-text">
                       Be the first to leave a comment.
                     </p>
 
@@ -480,14 +480,14 @@ export function FeedbackSection() {
                             className="size-full object-cover"
                           />
                         ) : (
-                          <div className="grid size-full place-items-center text-xs font-bold text-[#E6D2B5]">
+                          <div className="grid size-full place-items-center text-xs font-bold text-theme-text">
                             {item.name.charAt(0).toUpperCase()}
                           </div>
                         )}
                       </div>
 
                       <div className="min-w-0">
-                        <p className="text-sm font-semibold text-[#E6D2B5]">
+                        <p className="text-sm font-semibold text-theme-text">
                           {item.name}
                         </p>
 
@@ -504,7 +504,7 @@ export function FeedbackSection() {
             <p className="mt-3 text-center text-[10px] uppercase tracking-[0.18em] text-[#59635C]">
               {commentsPaused
                 ? "Paused"
-                : "Comments update automatically"}
+                : "Updating.."}
             </p>
           </div>
         </div>

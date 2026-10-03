@@ -1,5 +1,14 @@
+
 import { Link, useRouterState } from "@tanstack/react-router";
-import { LogIn, LogOut, Menu, Shield, X } from "lucide-react";
+import {
+  LogIn,
+  LogOut,
+  Menu,
+  Shield,
+  X,
+  Moon,
+  Sun,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { portfolio } from "@/data/portfolio";
@@ -30,9 +39,36 @@ export function SiteHeader() {
   const [user, setUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
 
+  // Light mode by default
+  const [darkMode, setDarkMode] = useState(false);
+
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
+
+  // Load saved theme
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+    } else {
+      setDarkMode(false);
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
+  // Apply theme
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -63,7 +99,15 @@ export function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-black/95 backdrop-blur-xl">
+    <header
+      className="
+        sticky top-0 z-40
+        bg-background/95 dark:bg-[#101711]/95
+        text-[#17100F] dark:text-[#F5EFE6]
+        backdrop-blur-xl
+        transition-colors duration-300
+      "
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center px-5 sm:px-8">
 
         {/* Logo */}
@@ -81,7 +125,14 @@ export function SiteHeader() {
             />
           </span>
 
-          <span className="text-sm font-semibold uppercase tracking-[0.14em] text-[#E6D2B5] transition-colors duration-300 group-hover:text-white">
+          <span
+            className="
+              text-sm font-semibold uppercase tracking-[0.14em]
+              text-[#641F32] dark:text-theme-text
+              transition-colors duration-300
+              group-hover:text-[#E85D3F]
+            "
+          >
             {portfolio.name}
           </span>
         </Link>
@@ -98,7 +149,7 @@ export function SiteHeader() {
               className={`text-sm font-medium transition-colors duration-300 ${
                 pathname === link.to
                   ? "text-[#E85D3F]"
-                  : "text-[#87917F] hover:text-[#E85D3F]"
+                  : "text-[#641F32] dark:text-[#87917F] hover:text-[#E85D3F]"
               }`}
             >
               {link.label}
@@ -112,7 +163,7 @@ export function SiteHeader() {
               className={`flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 ${
                 pathname === "/admin"
                   ? "text-[#E85D3F]"
-                  : "text-[#87917F] hover:text-[#E85D3F]"
+                  : "text-[#641F32] dark:text-[#87917F] hover:text-[#E85D3F]"
               }`}
             >
               <Shield className="size-4" />
@@ -122,20 +173,55 @@ export function SiteHeader() {
 
           <Link
             to="/connect"
-            className="text-sm font-medium text-[#87917F] transition-colors duration-300 hover:text-[#E85D3F]"
+            className="
+              text-sm font-medium
+              text-[#641F32] dark:text-[#87917F]
+              transition-colors duration-300
+              hover:text-[#E85D3F]
+            "
           >
             Let's connect
           </Link>
+
+          {/* Theme toggle */}
+          <button
+            type="button"
+            onClick={() => setDarkMode((value) => !value)}
+            aria-label={
+              darkMode ? "Switch to light mode" : "Switch to dark mode"
+            }
+            title={darkMode ? "Light mode" : "Dark mode"}
+            className="
+              grid size-9 place-items-center rounded-full
+              text-[#641F32] dark:text-theme-text
+              transition-all duration-300
+              hover:bg-[#641F32]/10
+              dark:hover:bg-[#E6D2B5]/10
+              hover:text-[#E85D3F]
+            "
+          >
+            {darkMode ? (
+              <Sun className="size-[18px]" />
+            ) : (
+              <Moon className="size-[18px]" />
+            )}
+          </button>
         </nav>
 
         {/* Auth - right side */}
-        <div className="ml-auto hidden items-center md:flex">
+        <div className="ml-auto hidden items-center gap-3 md:flex">
           {!authLoading &&
             (user ? (
               <button
                 type="button"
                 onClick={handleLogout}
-                className="flex items-center gap-2 rounded bg-[#dc651b] px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-[#A9485D]"
+                className="
+                  flex items-center gap-2 rounded-full
+                  bg-[#dc651b] px-4 py-2
+                  text-sm font-medium text-white
+                  transition-all duration-300
+                  hover:bg-[#A9485D]
+                "
               >
                 <LogOut className="size-4" />
                 Logout
@@ -144,7 +230,13 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={handleLogin}
-                className="flex items-center gap-2 rounded-full bg-[#641F32] px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:bg-[#A9485D]"
+                className="
+                  flex items-center gap-2 rounded-full
+                  bg-[#641F32] px-4 py-2
+                  text-sm font-medium text-white
+                  transition-all duration-300
+                  hover:bg-[#A9485D]
+                "
               >
                 <LogIn className="size-4" />
                 Login
@@ -158,7 +250,13 @@ export function SiteHeader() {
           aria-label={open ? "Close navigation" : "Open navigation"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
-          className="ml-auto grid size-10 place-items-center text-[#87917F] transition-colors hover:text-[#E85D3F] md:hidden"
+          className="
+            ml-auto grid size-10 place-items-center
+            text-[#641F32] dark:text-theme-text
+            transition-colors
+            hover:text-[#E85D3F]
+            md:hidden
+          "
         >
           {open ? (
             <X className="size-5" />
@@ -171,7 +269,13 @@ export function SiteHeader() {
       {/* Mobile navigation */}
       {open && (
         <nav
-          className="border-t border-[#28323C]/50 bg-black px-5 py-5 md:hidden"
+          className="
+            border-t border-[#28323C]/20
+            bg-background dark:bg-[#101711]
+            px-5 py-5
+            transition-colors duration-300
+            md:hidden
+          "
           aria-label="Mobile navigation"
         >
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-5">
@@ -184,7 +288,7 @@ export function SiteHeader() {
                 className={`text-sm font-medium transition-colors duration-300 ${
                   pathname === link.to
                     ? "text-[#E85D3F]"
-                    : "text-[#87917F] hover:text-[#E85D3F]"
+                    : "text-[#641F32] dark:text-[#87917F] hover:text-[#E85D3F]"
                 }`}
               >
                 {link.label}
@@ -198,7 +302,7 @@ export function SiteHeader() {
                 className={`flex items-center gap-2 text-sm font-medium transition-colors duration-300 ${
                   pathname === "/admin"
                     ? "text-[#E85D3F]"
-                    : "text-[#87917F] hover:text-[#E85D3F]"
+                    : "text-[#641F32] dark:text-[#87917F] hover:text-[#E85D3F]"
                 }`}
               >
                 <Shield className="size-4" />
@@ -209,10 +313,43 @@ export function SiteHeader() {
             <Link
               to="/connect"
               onClick={() => setOpen(false)}
-              className="text-sm font-medium text-[#87917F] transition-colors duration-300 hover:text-[#E85D3F]"
+              className="
+                text-sm font-medium
+                text-[#641F32] dark:text-[#87917F]
+                transition-colors duration-300
+                hover:text-[#E85D3F]
+              "
             >
               Let's connect
             </Link>
+
+            {/* Mobile theme toggle */}
+            <button
+              type="button"
+              onClick={() => setDarkMode((value) => !value)}
+              aria-label={
+                darkMode ? "Switch to light mode" : "Switch to dark mode"
+              }
+              className="
+                flex items-center gap-2
+                text-sm font-medium
+                text-[#641F32] dark:text-theme-text
+                transition-colors duration-300
+                hover:text-[#E85D3F]
+              "
+            >
+              {darkMode ? (
+                <>
+                  <Sun className="size-4" />
+                  Light mode
+                </>
+              ) : (
+                <>
+                  <Moon className="size-4" />
+                  Dark mode
+                </>
+              )}
+            </button>
 
             {!authLoading &&
               (user ? (
@@ -222,9 +359,16 @@ export function SiteHeader() {
                     handleLogout();
                     setOpen(false);
                   }}
-                  className="mt-1 flex items-center gap-2 rounded-full bg-grid px-5 py-2.5 text-sm font-medium text-white bg-[#dc651b] duration-300 "
+                  className="
+                    mt-1 flex items-center gap-2
+                    rounded-full bg-[#dc651b]
+                    px-5 py-2.5
+                    text-sm font-medium text-white
+                    transition-all duration-300
+                    hover:bg-[#A9485D]
+                  "
                 >
-                  <LogOut className="size-4  bg-[#dc651b] " />
+                  <LogOut className="size-4" />
                   Logout
                 </button>
               ) : (
@@ -234,7 +378,14 @@ export function SiteHeader() {
                     handleLogin();
                     setOpen(false);
                   }}
-                  className="mt-1 flex items-center gap-2 rounded-full bg-grid px-5 py-2.5 text-sm font-medium text-white  duration-300 "
+                  className="
+                    mt-1 flex items-center gap-2
+                    rounded-full bg-[#641F32]
+                    px-5 py-2.5
+                    text-sm font-medium text-white
+                    transition-all duration-300
+                    hover:bg-[#A9485D]
+                  "
                 >
                   <LogIn className="size-4" />
                   Login
@@ -249,8 +400,21 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-[#28323C]/60 bg-black">
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-8 text-sm text-[#87917F] sm:flex-row sm:items-center sm:justify-between sm:px-8">
+    <footer
+      className="
+        border-t border-[#28323C]/20
+        bg-background dark:bg-[#101711]
+        transition-colors duration-300
+      "
+    >
+      <div
+        className="
+          mx-auto flex max-w-7xl flex-col gap-3
+          px-5 py-8 text-sm
+          text-[#641F32] dark:text-[#87917F]
+          sm:flex-row sm:items-center sm:justify-between sm:px-8
+        "
+      >
         <p>Designed and built by {portfolio.name}.</p>
         <p>React portfolio · Details ready to personalize</p>
       </div>

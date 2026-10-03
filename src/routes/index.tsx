@@ -44,7 +44,8 @@ function Index() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-[#28323C]/50 bg-black">
+      <section className="relative overflow-hidden border-b border-[#28323C]/50 bg-background
+      ">
         <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl flex-col items-center justify-center px-5 py-20 text-center sm:px-8">
 
           {/* Availability */}
@@ -106,13 +107,13 @@ function Index() {
       <FeedbackSection />
 
       {/* Selected Work */}
-      <section className="border-b border-[#28323C]/50 bg-[#0C1117] py-20 sm:py-28">
+      <section className="border-b border-[#28323C]/50bg-surface-card py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between  text-[#E85D3F] ">
             <SectionHeading
               eyebrow="Selected work"
               title="Ideas shaped into useful, memorable interfaces."
-              copy="A project collection ready for your real case studies. Every card is driven by one editable data file."
+              copy="A collection of recent projects where I solved real-world problems through design and code."
             />
 
             <LinkButton to="/work" tone="quiet">
@@ -128,14 +129,14 @@ function Index() {
       </section>
 
       {/* Let's Connect */}
-      <section className="border-b border-[#28323C]/50 bg-black py-20 text-[#F5EFE6] sm:py-24">
+      <section className="border-b border-[#28323C]/50 bg-background py-20 text-[#F5EFE6] sm:py-24">
         <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 sm:px-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E85D3F]">
               Let's connect / 03
             </p>
 
-            <h2 className="mt-5 font-display text-5xl font-semibold leading-tight text-[#E6D2B5] sm:text-6xl">
+            <h2 className="mt-5 font-display text-5xl font-semibold leading-tight text-theme-text sm:text-6xl">
               Have a project worth talking about?
             </h2>
           </div>

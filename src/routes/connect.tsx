@@ -1,3 +1,4 @@
+
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { LockKeyhole, Send, Undo2 } from "lucide-react";
 import { Linkedin, Mail } from "lucide-react";
@@ -151,7 +152,7 @@ function ConnectPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#101312] text-[#F5EFE6]">
+    <main className="flex h-screen flex-col overflow-hidden bg-background text-[#F5EFE6]">
       {/* Social Icons */}
       <div
         className="
@@ -175,7 +176,7 @@ function ConnectPage() {
           className="
             text-[#87917F]
             transition-colors
-            hover:text-[#E6D2B5]
+            hover:text-theme-text
             focus-visible:outline-none
             focus-visible:ring-2
             focus-visible:ring-[#E85D3F]
@@ -194,7 +195,7 @@ function ConnectPage() {
           className="
             text-[#87917F]
             transition-colors
-            hover:text-[#E6D2B5]
+            hover:text-theme-text
             focus-visible:outline-none
             focus-visible:ring-2
             focus-visible:ring-[#E85D3F]
@@ -211,7 +212,7 @@ function ConnectPage() {
           className="
             text-[#87917F]
             transition-colors
-            hover:text-[#E6D2B5]
+            hover:text-theme-text
             focus-visible:outline-none
             focus-visible:ring-2
             focus-visible:ring-[#E85D3F]
@@ -225,11 +226,11 @@ function ConnectPage() {
       </div>
 
       {/* Chat Header */}
-      <header className="shrink-0 border-b border-[#334A35]/60 bg-[#171B18]">
+      <header className="z-40 h-[76px] shrink-0 border-b border-[#334A35]/60 bg-surface-card">
         <div
           className="
             flex
-            h-[76px]
+            h-full
             w-full
             max-w-4xl
             items-center
@@ -249,7 +250,7 @@ function ConnectPage() {
                 shrink-0
                 items-center
                 justify-center
-                text-[#F5EFE6]
+                text-theme-text
                 transition-colors
                 hover:text-[#E85D3F]
                 focus-visible:outline-none
@@ -289,12 +290,10 @@ function ConnectPage() {
 
             {/* Name + status */}
             <div className="min-w-0">
-              <h1 className="text-base font-semibold leading-5 text-[#F5EFE6]">
+              <h1 className="text-base font-semibold leading-5 text-theme-text">
                 {portfolio.name}
               </h1>
 
-              {/* ISSUE 1 FIX:
-                  14px instead of 11px */}
               <p className="mt-0.5 text-sm leading-5 text-[#87917F]">
                 Online · Usually replies within a day
               </p>
@@ -305,10 +304,10 @@ function ConnectPage() {
 
       {/* Chat */}
       <section className="flex min-h-0 flex-1 justify-center">
-        <div className="flex min-h-[calc(100vh-76px)] w-full max-w-4xl flex-col">
-          {/* Messages */}
+        <div className="flex min-h-0 w-full max-w-4xl flex-col">
+          {/* Messages — ONLY THIS AREA SCROLLS */}
           <div
-            className="flex-1 overflow-y-auto px-4 py-6 sm:px-7 sm:py-8"
+            className="min-h-0 flex-1 overflow-y-auto px-4 py-6 sm:px-7 sm:py-8"
             style={{
               scrollbarWidth: "thin",
             }}
@@ -326,13 +325,14 @@ function ConnectPage() {
                 </div>
 
                 <div className="relative max-w-[82%] sm:max-w-md">
-                  <div className="chat-blob chat-blob-me px-5 py-3.5">
-                    <p className="text-[14px] leading-6 text-[#FFF7EC]">
-                     Hey, glad you’re here!
+                  <div className="text-theme-text chat-blob chat-blob-me px-5 py-3.5">
+                    <p className="text-[14px] leading-6 ">
+                      Hey, glad you’re here!
                     </p>
 
-                    <p className="mt-1.5 text-[13px] leading-5 text-[#D8D2C8]">
-                     I’m always open to talking about frontend development, new projects, ideas, or simply having a good conversation.
+                    <p className="mt-1.5 text-[13px] leading-5 ">
+                      I’m always open to talking about frontend development,
+                      new projects, ideas, or simply having a good conversation.
                     </p>
 
                     <div className="mt-1 text-right text-[10px] text-[#9B9288]">
@@ -384,8 +384,8 @@ function ConnectPage() {
                       <p
                         className={`text-[14px] leading-6 ${
                           isUserMessage
-                            ? "text-[#172017]"
-                            : "text-[#FFF7EC]"
+                            ? "text-chat-user-text"
+                            : "text-theme-text"
                         }`}
                       >
                         {message.text}
@@ -394,7 +394,7 @@ function ConnectPage() {
                       <div
                         className={`mt-1 flex items-center gap-1.5 text-[10px] ${
                           isUserMessage
-                            ? "justify-end text-[#536052]"
+                            ? "justify-end text-chat-user-muted"
                             : "justify-start text-[#9B9288]"
                         }`}
                       >
@@ -413,8 +413,8 @@ function ConnectPage() {
             </div>
           </div>
 
-          {/* Message composer */}
-          <div className="shrink-0 px-4 py-4 sm:px-7">
+          {/* Message composer — ALWAYS AT BOTTOM */}
+          <div className="z-30 shrink-0 border-t border-border bg-background px-4 py-4 sm:px-7">
             <form
               onSubmit={submit}
               className="
@@ -499,8 +499,6 @@ function ConnectPage() {
               </ActionButton>
             </form>
 
-            {/* ISSUE 2 FIX:
-                12px instead of 10px */}
             <p className="mx-auto mt-2 max-w-[800px] text-center text-xs leading-5 text-[#727A72]">
               Messages are private and connected to your Google account.
             </p>
@@ -518,16 +516,16 @@ function ConnectPage() {
 
         /* Mehreen / incoming message */
         .chat-blob-me {
-          background: #202720;
-          border: 1px solid #354036;
+          background: var(--surface-card);
+          border: 1px solid var(--border);
           border-bottom-left-radius: 9px;
           box-shadow: 0 7px 22px rgba(0, 0, 0, 0.16);
         }
 
         /* User message */
         .chat-blob-user {
-          background: #D8E6D4;
-          border: 1px solid #C2D3BD;
+          background: var(--chat-user);
+          border: 1px solid var(--chat-user-border);
           border-bottom-right-radius: 9px;
           box-shadow: 0 7px 22px rgba(0, 0, 0, 0.12);
         }
@@ -558,3 +556,4 @@ function ConnectPage() {
     </main>
   );
 }
+
