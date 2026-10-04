@@ -73,7 +73,7 @@ function AboutPage() {
               </span>
             </div>
 
-            <p className="max-w-4xl font-display text-[32px] font-medium leading-tight text-theme-text sm:text-[48px]">
+            <p className="max-w-4xl font-display text-[32px] font-medium leading-tight text-[#E85D3F] sm:text-[48px]">
               I care about the space between{" "}
               <span className="text-[#E85D3F]">good code</span> and a
               website that actually feels right.
@@ -91,7 +91,7 @@ function AboutPage() {
                 The toolkit
               </p>
 
-              <h2 className="font-display text-[32px] font-semibold text-theme-text sm:text-[48px]">
+              <h2 className="font-display text-[32px] font-semibold text-[#E85D3F] sm:text-[48px]">
                 What I bring to a project.
               </h2>
             </div>
@@ -110,7 +110,7 @@ function AboutPage() {
                 <span className="text-sm text-[#59635C]">01</span>
               </div>
 
-              <h3 className="mt-8 text-xl font-semibold text-theme-text">
+              <h3 className="mt-8 text-xl font-semibold text-[#E85D3F]">
                 Frontend development
               </h3>
 
@@ -131,7 +131,7 @@ function AboutPage() {
                 <span className="text-sm text-[#59635C]">02</span>
               </div>
 
-              <h3 className="mt-8 text-xl font-semibold text-theme-text">
+              <h3 className="mt-8 text-xl font-semibold text-[#E85D3F]">
                 Responsive UI
               </h3>
 
@@ -151,7 +151,7 @@ function AboutPage() {
                 <span className="text-sm text-[#59635C]">03</span>
               </div>
 
-              <h3 className="mt-8 text-xl font-semibold text-theme-text">
+              <h3 className="mt-8 text-xl font-semibold text-[#E85D3F]">
                 Thoughtful details
               </h3>
 
@@ -171,7 +171,7 @@ function AboutPage() {
                 <span className="text-sm text-[#59635C]">04</span>
               </div>
 
-              <h3 className="mt-8 text-xl font-semibold text-theme-text">
+              <h3 className="mt-8 text-xl font-semibold text-[#E85D3F]">
                 From idea to launch
               </h3>
 
@@ -228,7 +228,7 @@ function AboutPage() {
               Built through experience
             </p>
 
-            <h2 className="mt-4 font-myfont font-display text-[32px] font-semibold text-theme-text sm:text-[48px]">
+            <h2 className="mt-4 font-myfont font-display text-[32px] font-semibold text-[#E85D3F] sm:text-[48px]">
               Things I have actually worked on.
             </h2>
           </div>
@@ -262,7 +262,7 @@ function AboutPage() {
                 Current stack
               </p>
 
-              <h2 className="font-myfont mt-3 font-display text-[32px] font-semibold text-theme-text sm:text-[48px]">
+              <h2 className="font-myfont mt-3 font-display text-[32px] font-semibold text-[#E85D3F] sm:text-[48px]">
                 Tools I build with.
               </h2>
             </div>
@@ -271,7 +271,7 @@ function AboutPage() {
               {portfolio.technologies.map((technology) => (
                 <span
                   key={technology}
-                  className="rounded-full border border-[#28323C] px-4 py-2 text-sm font-medium text-[#87917F] transition-colors hover:border-[#641F32] hover:text-theme-text"
+                  className="rounded-full border border-[#28323C] px-4 py-2 text-sm font-medium text-[#87917F] transition-colors hover:border-[#641F32] hover:text-[#E85D3F]"
                 >
                   {technology}
                 </span>
@@ -288,7 +288,7 @@ function AboutPage() {
             Next / Let's talk
           </p>
 
-          <h2 className="mt-5 font-display text-[32px] font-semibold leading-tight text-theme-text sm:text-[48px]">
+          <h2 className="mt-5 font-display text-[32px] font-semibold leading-tight text-[#E85D3F] sm:text-[48px]">
             Have something worth building?
           </h2>
 

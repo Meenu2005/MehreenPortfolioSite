@@ -26,6 +26,9 @@
   --color-chat-user-text: var(--chat-user-text);
   --color-chat-user-muted: var(--chat-user-muted);
 
+  --chat-me: #28323C;
+  --chat-me-border: #3C4A3E;
+  --chat-me-text: #F5EFE6;
 
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -100,6 +103,12 @@
   /* Main */
   --background: oklch(0.985 0.008 80);
   --foreground: oklch(0.17 0.022 31);
+
+
+  --chat-me: #F5EFE6;
+  --chat-me-border: #DDD2C3;
+  --chat-me-text: #17100F;
+
 
   /* Cards */
   --card: oklch(0.995 0.004 80);

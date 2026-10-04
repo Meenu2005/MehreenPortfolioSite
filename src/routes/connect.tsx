@@ -1,8 +1,6 @@
 
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { LockKeyhole, Send, Undo2 } from "lucide-react";
-import { Linkedin, Mail } from "lucide-react";
-import { FaRedditAlien } from "react-icons/fa";
+import { Github, Linkedin, Mail, LockKeyhole, Send, Undo2 } from "lucide-react";
 import {
   useEffect,
   useRef,
@@ -152,95 +150,26 @@ function ConnectPage() {
   };
 
   return (
-    <main className="flex h-screen flex-col overflow-hidden bg-background text-[#F5EFE6]">
-      {/* Social Icons */}
-      <div
-        className="
-          fixed
-          left-10
-          top-1/2
-          z-50
-          flex
-          -translate-y-1/2
-          flex-col
-          items-center
-          gap-4
-          sm:left-14
-        "
-        aria-label="Social links"
-      >
-        <a
-          href="https://www.reddit.com/user/meenu-code/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            text-[#87917F]
-            transition-colors
-            hover:text-theme-text
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-[#E85D3F]
-            focus-visible:ring-offset-2
-            focus-visible:ring-offset-[#101312]
-          "
-          aria-label="Reddit"
-        >
-          <FaRedditAlien size={36} />
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/mehreenrao"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            text-[#87917F]
-            transition-colors
-            hover:text-theme-text
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-[#E85D3F]
-            focus-visible:ring-offset-2
-            focus-visible:ring-offset-[#101312]
-          "
-          aria-label="LinkedIn"
-        >
-          <Linkedin size={36} />
-        </a>
-
-        <a
-          href="mailto:mehreenrao220117@gmail.com"
-          className="
-            text-[#87917F]
-            transition-colors
-            hover:text-theme-text
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-[#E85D3F]
-            focus-visible:ring-offset-2
-            focus-visible:ring-offset-[#101312]
-          "
-          aria-label="Email"
-        >
-          <Mail size={36} />
-        </a>
-      </div>
-
-      {/* Chat Header */}
-      <header className="z-40 h-[76px] shrink-0 border-b border-[#334A35]/60 bg-surface-card">
+    <main className="flex h-screen flex-col overflow-hidden bg-background text-theme-text">
+      {/* Header / Nav */}
+      <header className="z-40 h-[76px] shrink-0 border-b border-border bg-surface-card">
         <div
           className="
+            mx-auto
             flex
             h-full
             w-full
-            max-w-4xl
+            max-w-5xl
             items-center
-            pl-10
-            pr-5
-            sm:pl-14
-            sm:pr-7
+            justify-between
+            gap-4
+            px-4
+            sm:px-7
+            lg:px-10
           "
         >
-          <div className="flex w-full items-center gap-3">
+          {/* Left side */}
+          <div className="flex min-w-0 items-center gap-3">
             {/* Back button */}
             <Link
               to="/work"
@@ -250,22 +179,32 @@ function ConnectPage() {
                 shrink-0
                 items-center
                 justify-center
-                text-theme-text
+                text-[#E85D3F]
                 transition-colors
-                hover:text-[#E85D3F]
+                hover:text-[#A9485D]
                 focus-visible:outline-none
                 focus-visible:ring-2
                 focus-visible:ring-[#E85D3F]
                 focus-visible:ring-offset-2
-                focus-visible:ring-offset-[#171B18]
+                focus-visible:ring-offset-background
               "
             >
-              <Undo2 size={24} strokeWidth={2} />
+              <Undo2 size={22} strokeWidth={2} />
             </Link>
 
-            {/* Mehreen avatar */}
+            {/* Avatar */}
             <div className="relative shrink-0">
-              <div className="grid size-11 place-items-center overflow-hidden rounded-full bg-[#641F32]">
+              <div
+                className="
+                  grid
+                  size-10
+                  place-items-center
+                  overflow-hidden
+                  rounded-full
+                  bg-[#641F32]
+                  sm:size-11
+                "
+              >
                 <img
                   src={avatarIdle}
                   alt={portfolio.name}
@@ -278,11 +217,12 @@ function ConnectPage() {
                   absolute
                   bottom-0
                   right-0
-                  size-3
+                  size-2.5
                   rounded-full
                   border-2
-                  border-[#171B18]
+                  border-surface-card
                   bg-[#dc651b]
+                  sm:size-3
                 "
                 aria-label="Online"
               />
@@ -290,33 +230,131 @@ function ConnectPage() {
 
             {/* Name + status */}
             <div className="min-w-0">
-              <h1 className="text-base font-semibold leading-5 text-theme-text">
+              <h1 className="truncate text-sm font-semibold leading-5 text-[#E85D3F] sm:text-base">
                 {portfolio.name}
               </h1>
 
-              <p className="mt-0.5 text-sm leading-5 text-[#87917F]">
+              <p className="truncate text-[11px] leading-5 text-[#87917F] sm:text-sm">
                 Online · Usually replies within a day
               </p>
             </div>
           </div>
+
+          {/* Social navigation */}
+          <nav
+            aria-label="Social links"
+            className="
+              flex
+              shrink-0
+              items-center
+              gap-3
+              sm:gap-4
+            "
+          >
+            {/* GitHub */}
+            <a
+              href="https://github.com/Meenu2005"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="
+                text-[#87917F]
+                transition-all
+                duration-200
+                hover:-translate-y-0.5
+                hover:text-[#E85D3F]
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[#E85D3F]
+                focus-visible:ring-offset-2
+                focus-visible:ring-offset-background
+              "
+            >
+              <Github className="size-5 sm:size-[22px]" />
+            </a>
+
+            {/* LinkedIn */}
+            <a
+              href="https://www.linkedin.com/in/mehreenrao"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="
+                text-[#87917F]
+                transition-all
+                duration-200
+                hover:-translate-y-0.5
+                hover:text-[#E85D3F]
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[#E85D3F]
+                focus-visible:ring-offset-2
+                focus-visible:ring-offset-background
+              "
+            >
+              <Linkedin className="size-5 sm:size-[22px]" />
+            </a>
+
+            {/* Email */}
+            <a
+              href="mailto:mehreenrao220117@gmail.com"
+              aria-label="Email"
+              className="
+                text-[#87917F]
+                transition-all
+                duration-200
+                hover:-translate-y-0.5
+                hover:text-[#E85D3F]
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[#E85D3F]
+                focus-visible:ring-offset-2
+                focus-visible:ring-offset-background
+              "
+            >
+              <Mail className="size-5 sm:size-[22px]" />
+            </a>
+          </nav>
         </div>
       </header>
 
       {/* Chat */}
-      <section className="flex min-h-0 flex-1 justify-center">
-        <div className="flex min-h-0 w-full max-w-4xl flex-col">
+      <section className="relative flex min-h-0 flex-1 justify-center overflow-hidden">
+        {/* WhatsApp-style subtle doodle background */}
+        <div className="chat-doodle-bg" aria-hidden="true" />
+
+        <div className="relative z-10 flex min-h-0 w-full max-w-5xl flex-col">
           {/* Messages — ONLY THIS AREA SCROLLS */}
           <div
-            className="min-h-0 flex-1 overflow-y-auto px-4 py-6 sm:px-7 sm:py-8"
+            className="
+              min-h-0
+              flex-1
+              overflow-y-auto
+              px-4
+              py-5
+              sm:px-7
+              sm:py-8
+              lg:px-10
+            "
             style={{
               scrollbarWidth: "thin",
             }}
           >
-            {/* Center conversation content */}
             <div className="mx-auto w-full max-w-[800px]">
               {/* Intro message */}
               <div className="flex items-end gap-2">
-                <div className="hidden size-7 shrink-0 overflow-hidden rounded-full bg-[#641F32] sm:block">
+                {/* Avatar on desktop/tablet */}
+                <div
+                  className="
+                    hidden
+                    size-7
+                    shrink-0
+                    overflow-hidden
+                    rounded-full
+                    bg-[#641F32]
+                    sm:block
+                  "
+                >
                   <img
                     src={avatarIdle}
                     alt=""
@@ -324,18 +362,18 @@ function ConnectPage() {
                   />
                 </div>
 
-                <div className="relative max-w-[82%] sm:max-w-md">
-                  <div className="text-theme-text chat-blob chat-blob-me px-5 py-3.5">
-                    <p className="text-[14px] leading-6 ">
+                <div className="relative max-w-[88%] sm:max-w-md">
+                  <div className="chat-blob chat-blob-me px-4 py-3 sm:px-5 sm:py-3.5">
+                    <p className="text-[14px] leading-6 text-[var(--chat-me-text)]">
                       Hey, glad you’re here!
                     </p>
 
-                    <p className="mt-1.5 text-[13px] leading-5 ">
+                    <p className="mt-1.5 text-[13px] leading-5 text-[var(--chat-me-text)]">
                       I’m always open to talking about frontend development,
                       new projects, ideas, or simply having a good conversation.
                     </p>
 
-                    <div className="mt-1 text-right text-[10px] text-[#9B9288]">
+                    <div className="mt-1 text-right text-[10px] text-chat-user-muted">
                       Now
                     </div>
                   </div>
@@ -344,14 +382,27 @@ function ConnectPage() {
 
               {/* Sign in message */}
               {showGate && (
-                <div className="my-5 flex justify-center">
-                  <div className="flex max-w-sm items-center gap-3 rounded-2xl border border-[#A9485D]/50 bg-[#641F32]/20 px-4 py-3">
+                <div className="my-5 flex justify-center px-2">
+                  <div
+                    className="
+                      flex
+                      max-w-sm
+                      items-center
+                      gap-3
+                      rounded-2xl
+                      border
+                      border-[#A9485D]/50
+                      bg-[#641F32]/20
+                      px-4
+                      py-3
+                    "
+                  >
                     <div className="grid size-9 shrink-0 place-items-center rounded-full bg-[#641F32]/40">
                       <LockKeyhole className="size-4 text-[#FFB89A]" />
                     </div>
 
                     <div>
-                      <p className="text-xs font-semibold text-[#F5EFE6]">
+                      <p className="text-xs font-semibold text-theme-text">
                         One quick sign-in
                       </p>
 
@@ -375,35 +426,54 @@ function ConnectPage() {
                     }`}
                   >
                     <div
-                      className={`relative max-w-[82%] sm:max-w-md ${
-                        isUserMessage
-                          ? "chat-blob chat-blob-user px-5 py-3"
-                          : "chat-blob chat-blob-me px-5 py-3"
-                      }`}
-                    >
-                      <p
-                        className={`text-[14px] leading-6 ${
+                      className={`
+                        relative
+                        max-w-[88%]
+                        sm:max-w-md
+                        ${
                           isUserMessage
-                            ? "text-chat-user-text"
-                            : "text-theme-text"
-                        }`}
+                            ? "chat-blob chat-blob-user px-4 py-3 sm:px-5"
+                            : "chat-blob chat-blob-me px-4 py-3 sm:px-5"
+                        }
+                      `}
+                    >
+<div
+                        className={`
+                          mt-1
+                          flex
+                          items-center
+                          gap-1.5
+                          text-[10px]
+                          ${
+                            isUserMessage
+                              ? "justify-end text-white/70"
+                              : "justify-start text-chat-user-muted"
+                          }
+                        `}
+                      >
+                       
+
+                       
+                     
+                       <span>
+                          {isUserMessage ? "You" : portfolio.name}
+                        </span>
+                         </div>
+                      <p
+                        className={`
+                          text-[14px]
+                          leading-6
+                          ${
+                           isUserMessage
+  ? "text-white"
+  : "text-[var(--chat-me-text)]"
+                          }
+                        `}
                       >
                         {message.text}
                       </p>
 
-                      <div
-                        className={`mt-1 flex items-center gap-1.5 text-[10px] ${
-                          isUserMessage
-                            ? "justify-end text-chat-user-muted"
-                            : "justify-start text-[#9B9288]"
-                        }`}
-                      >
-                        <span>
-                          {isUserMessage ? "You" : portfolio.name}
-                        </span>
-
-                        {isUserMessage && <span>✓</span>}
-                      </div>
+                      
                     </div>
                   </div>
                 );
@@ -413,8 +483,21 @@ function ConnectPage() {
             </div>
           </div>
 
-          {/* Message composer — ALWAYS AT BOTTOM */}
-          <div className="z-30 shrink-0 border-t border-border bg-background px-4 py-4 sm:px-7">
+          {/* Composer */}
+          <div
+            className="
+              z-30
+              shrink-0
+              border-t
+              border-border
+              bg-background
+              px-4
+              py-3
+              sm:px-7
+              sm:py-4
+              lg:px-10
+            "
+          >
             <form
               onSubmit={submit}
               className="
@@ -424,16 +507,15 @@ function ConnectPage() {
                 max-w-[800px]
                 items-end
                 gap-2
-                rounded-[22px]
+                rounded-[20px]
                 border
-                border-[#536052]
-                bg-[#202720]
+                border-border
+                bg-surface-input
                 p-2
-                shadow-[0_8px_30px_rgba(0,0,0,0.22)]
+                shadow-[0_8px_30px_rgba(0,0,0,0.12)]
                 transition-all
-                focus-within:border-[#dc651b]
-                focus-within:bg-[#252D25]
-                focus-within:shadow-[0_8px_35px_rgba(100,31,50,0.16)]
+                focus-within:border-[#E85D3F]
+                focus-within:shadow-[0_8px_35px_rgba(232,93,63,0.12)]
               "
             >
               <label className="sr-only" htmlFor="message">
@@ -458,15 +540,16 @@ function ConnectPage() {
                 className="
                   max-h-32
                   min-h-11
+                  min-w-0
                   flex-1
                   resize-none
                   bg-transparent
                   px-3
                   py-2.5
                   text-sm
-                  text-[#FFF9F1]
+                  text-theme-text
                   outline-none
-                  placeholder:text-[#AAAFA6]
+                  placeholder:text-[#87917F]
                 "
               />
 
@@ -475,23 +558,24 @@ function ConnectPage() {
                 aria-label="Send message"
                 className="
                   grid
-                  size-11
+                  size-10
                   shrink-0
                   place-items-center
                   rounded-full
-                  bg-[#dc651b]
+                  bg-[#E85D3F]
                   p-0
                   text-white
                   shadow-md
                   transition-transform
                   hover:scale-105
-                  hover:bg-[#C15C70]
+                  hover:bg-[#C95038]
                   active:scale-95
                   focus-visible:outline-none
                   focus-visible:ring-2
                   focus-visible:ring-[#E6D2B5]
                   focus-visible:ring-offset-2
-                  focus-visible:ring-offset-[#202720]
+                  focus-visible:ring-offset-surface-input
+                  sm:size-11
                 "
               >
                 <Send className="size-4" />
@@ -499,49 +583,69 @@ function ConnectPage() {
               </ActionButton>
             </form>
 
-            <p className="mx-auto mt-2 max-w-[800px] text-center text-xs leading-5 text-[#727A72]">
+            <p className="mx-auto mt-2 max-w-[800px] text-center text-[10px] leading-5 text-[#727A72] sm:text-xs">
               Messages are private and connected to your Google account.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Organic message bubble styles */}
+      {/* Organic chat bubbles */}
       <style>{`
+        /* WhatsApp-style subtle doodle background */
+        .chat-doodle-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background-color: var(--background);
+  background-image: url("data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23E85D3F' stroke-width='1.5' opacity='.36'%3E%3Cpath d='M22 24h12v8H22z'/%3E%3Cpath d='M25 27l6 0M25 30l4 0'/%3E%3Cpath d='M72 18l3 7 7 3-7 3-3 7-3-7-7-3 7-3z'/%3E%3Ccircle cx='135' cy='27' r='8'/%3E%3Cpath d='M130 27h10M135 22v10'/%3E%3Cpath d='M42 72l6-6 6 6-6 6z'/%3E%3Cpath d='M18 108c5-7 12-7 17 0-5 7-12 7-17 0z'/%3E%3Cpath d='M85 67l8 8m0-8-8 8'/%3E%3Cpath d='M122 72h15M129 65v15'/%3E%3Cpath d='M148 105c0-6 5-10 10-10s10 4 10 10c0 5-4 9-10 9s-10-4-10-9z'/%3E%3Cpath d='M31 145l5-8 5 8-5 8z'/%3E%3Cpath d='M77 126l10 0-5 9z'/%3E%3Cpath d='M105 143c4-4 9-4 13 0-4 4-9 4-13 0z'/%3E%3Cpath d='M143 145l7-7 7 7-7 7z'/%3E%3Cpath d='M55 105l4-4 4 4-4 4z'/%3E%3C/g%3E%3Cg fill='%23E85D3F' opacity='.15'%3E%3Ccircle cx='16' cy='52' r='2'/%3E%3Ccircle cx='62' cy='38' r='2'/%3E%3Ccircle cx='112' cy='48' r='2'/%3E%3Ccircle cx='160' cy='70' r='2'/%3E%3Ccircle cx='70' cy='94' r='2'/%3E%3Ccircle cx='25' cy='135' r='2'/%3E%3Ccircle cx='120' cy='118' r='2'/%3E%3Ccircle cx='165' cy='155' r='2'/%3E%3C/g%3E%3C/svg%3E");
+
+  background-repeat: repeat;
+  background-size: 100px 100px;
+}
+
+        @media (prefers-reduced-motion: reduce) {
+          .chat-doodle-bg {
+            background-attachment: initial;
+          }
+        }
+
         .chat-blob {
           position: relative;
           isolation: isolate;
-          border-radius: 25px 27px 24px 30px;
+          border-radius: 24px 24px 24px 24px;
         }
 
-        /* Mehreen / incoming message */
+        /* My / Mehreen message */
         .chat-blob-me {
-          background: var(--surface-card);
-          border: 1px solid var(--border);
-          border-bottom-left-radius: 9px;
-          box-shadow: 0 7px 22px rgba(0, 0, 0, 0.16);
+        
+   background: var(--chat-me);
+  border: 1px solid var(--chat-me-border);
+ 
+  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.12);
         }
 
-        /* User message */
+        /* Visitor message */
         .chat-blob-user {
-          background: var(--chat-user);
-          border: 1px solid var(--chat-user-border);
-          border-bottom-right-radius: 9px;
-          box-shadow: 0 7px 22px rgba(0, 0, 0, 0.12);
+          background: #E85D3F;
+          border: 1px solid #E85D3F;
+         
+          box-shadow: 0 7px 22px rgba(0, 0, 0, 0.14);
         }
 
-        /* More organic variations */
         .chat-blob-me:nth-child(3n) {
-          border-radius: 29px 23px 28px 18px;
+           border-radius: 24px 24px 24px 24px;
         }
 
         .chat-blob-user:nth-child(3n) {
-          border-radius: 23px 30px 18px 27px;
+          border-radius: 24px 24px 24px 24px;
         }
 
         @media (max-width: 640px) {
           .chat-blob {
-            border-radius: 22px 24px 21px 26px;
+            border-radius: 21px 23px 20px 25px;
           }
 
           .chat-blob-me {
@@ -556,4 +660,3 @@ function ConnectPage() {
     </main>
   );
 }
-

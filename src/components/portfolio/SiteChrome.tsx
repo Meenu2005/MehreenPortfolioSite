@@ -128,7 +128,7 @@ export function SiteHeader() {
           <span
             className="
               text-sm font-semibold uppercase tracking-[0.14em]
-              text-[#641F32] dark:text-theme-text
+              text-[#641F32] dark:text-[#E85D3F]
               transition-colors duration-300
               group-hover:text-[#E85D3F]
             "
@@ -193,7 +193,7 @@ export function SiteHeader() {
             title={darkMode ? "Light mode" : "Dark mode"}
             className="
               grid size-9 place-items-center rounded-full
-              text-[#641F32] dark:text-theme-text
+              text-[#641F32] dark:text-[#E85D3F]
               transition-all duration-300
               hover:bg-[#641F32]/10
               dark:hover:bg-[#E6D2B5]/10
@@ -252,7 +252,7 @@ export function SiteHeader() {
           onClick={() => setOpen((value) => !value)}
           className="
             ml-auto grid size-10 place-items-center
-            text-[#641F32] dark:text-theme-text
+            text-[#641F32] dark:text-[#E85D3F]
             transition-colors
             hover:text-[#E85D3F]
             md:hidden
@@ -333,7 +333,7 @@ export function SiteHeader() {
               className="
                 flex items-center gap-2
                 text-sm font-medium
-                text-[#641F32] dark:text-theme-text
+                text-[#641F32] dark:text-[#E85D3F]
                 transition-colors duration-300
                 hover:text-[#E85D3F]
               "

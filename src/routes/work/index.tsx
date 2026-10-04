@@ -201,7 +201,7 @@ function WorkPage() {
                                   />
                                 )}
 
-                                <span className="hidden text-xs font-medium sm:inline text-theme-text">
+                                <span className="hidden text-xs font-medium sm:inline text-[#E85D3F]">
                                   {technology}
                                 </span>
                               </div>
@@ -238,7 +238,7 @@ function WorkPage() {
                           rel="noreferrer"
                           className="group/title inline-flex items-start gap-3"
                         >
-                          <h2 className="font-display text-3xl font-semibold leading-tight text-theme-text transition-colors duration-300 group-hover/title:text-[#E85D3F] sm:text-4xl">
+                          <h2 className="font-display text-3xl font-semibold leading-tight text-[#E85D3F] transition-colors duration-300 group-hover/title:text-[#E85D3F] sm:text-4xl">
                             {project.title}
                           </h2>
 
@@ -301,7 +301,7 @@ function WorkPage() {
                               “{review.reviewText}”
                             </p>
 
-                            <p className="mt-3 text-xs font-semibold text-theme-text">
+                            <p className="mt-3 text-xs font-semibold text-[#E85D3F]">
                               {review.clientName}
                             </p>
                           </div>
@@ -324,7 +324,7 @@ function WorkPage() {
               Have a project in mind?
             </p>
 
-            <p className="mt-5 font-display text-4xl font-semibold leading-tight text-theme-text sm:text-5xl">
+            <p className="mt-5 font-display text-4xl font-semibold leading-tight text-[#E85D3F] sm:text-5xl">
               From structure and interaction to the final deployed experience.
             </p>
 

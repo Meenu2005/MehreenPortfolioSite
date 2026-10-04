@@ -39,7 +39,7 @@ function CaseStudyPage() {
             404
           </p>
 
-          <h1 className="mt-4 font-display text-4xl font-semibold text-theme-text">
+          <h1 className="mt-4 font-display text-4xl font-semibold text-[#E85D3F]">
             Case study not found.
           </h1>
 
@@ -82,7 +82,7 @@ function CaseStudyPage() {
               {caseStudy.category}
             </p>
 
-            <h1 className="mt-5 font-display text-5xl font-semibold leading-[0.95] tracking-tight text-theme-text sm:text-6xl lg:text-8xl">
+            <h1 className="mt-5 font-display text-5xl font-semibold leading-[0.95] tracking-tight text-[#E85D3F] sm:text-6xl lg:text-8xl">
               {caseStudy.title}
             </h1>
 
@@ -109,7 +109,7 @@ function CaseStudyPage() {
                   href={caseStudy.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-[#28323C] bg-[#101711] px-5 py-3 text-sm font-semibold text-theme-text transition hover:border-[#E85D3F]"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#28323C] bg-[#101711] px-5 py-3 text-sm font-semibold text-[#E85D3F] transition hover:border-[#E85D3F]"
                 >
                   View Code
                   <ExternalLink className="size-4" />
@@ -208,7 +208,7 @@ function CaseStudyPage() {
                     0{index + 1}
                   </p>
 
-                  <h2 className="mt-3 font-display text-3xl font-semibold text-theme-text sm:text-4xl">
+                  <h2 className="mt-3 font-display text-3xl font-semibold text-[#E85D3F] sm:text-4xl">
                     {point.title}
                   </h2>
 
@@ -296,7 +296,7 @@ function CaseStudyPage() {
                     href={caseStudy.githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-[#28323C] bg-[#101711] px-5 py-3 text-sm font-semibold text-theme-text transition hover:border-[#E85D3F]"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#28323C] bg-[#101711] px-5 py-3 text-sm font-semibold text-[#E85D3F] transition hover:border-[#E85D3F]"
                   >
                     GitHub
                     <ExternalLink className="size-4" />
@@ -309,7 +309,7 @@ function CaseStudyPage() {
       </section>
 
       {/* Bottom navigation */}
-      <section className="bg-[#0C1117] py-20 sm:py-28">
+      <section className="bg-background py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -317,14 +317,14 @@ function CaseStudyPage() {
                 More work
               </p>
 
-              <h2 className="mt-4 font-display text-3xl font-semibold text-theme-text sm:text-4xl">
+              <h2 className="mt-4 font-display text-3xl font-semibold text-[#E85D3F] sm:text-4xl">
                 Explore other projects.
               </h2>
             </div>
 
             <Link
               to="/work"
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-[#28323C] bg-[#101711] px-5 py-3 text-sm font-semibold text-theme-text transition hover:border-[#E85D3F]"
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-[#28323C] bg-[#E85D3F] px-5 py-3 text-sm font-semibold text-[#FFFFF] transition hover:border-[#E85D3F]"
             >
               View all work
               <ArrowUpRight className="size-4" />
@@ -350,7 +350,7 @@ function OverviewItem({
         {label}
       </p>
 
-      <p className="mt-3 text-sm leading-6 text-theme-text">
+      <p className="mt-3 text-sm leading-6 text-[#E85D3F]">
         {value}
       </p>
     </div>
@@ -371,7 +371,7 @@ function SectionLabel({
         {number}
       </p>
 
-      <h2 className="mt-3 font-display text-3xl font-semibold text-theme-text sm:text-4xl">
+      <h2 className="mt-3 font-display text-3xl font-semibold text-[#E85D3F] sm:text-4xl">
         {title}
       </h2>
     </div>

@@ -313,7 +313,7 @@ export function FeedbackSection() {
             </p>
 
             <div className="mt-3 flex items-center justify-center gap-3">
-              <span className="font-myfont text-4xl font-semibold leading-none text-theme-text sm:text-5xl">
+              <span className="font-myfont text-4xl font-semibold leading-none text-[#E85D3F] sm:text-5xl">
                 {averageRating ? averageRating.toFixed(1) : "—"}
               </span>
 
@@ -400,7 +400,7 @@ export function FeedbackSection() {
                 Comments & suggestions
               </p>
 
-              <h3 className="mt-3 font-myfont text-3xl font-semibold text-theme-text sm:text-4xl">
+              <h3 className="mt-3 font-myfont text-3xl font-semibold text-[#E85D3F] sm:text-4xl">
                 What people are saying
               </h3>
             </div>
@@ -456,7 +456,7 @@ export function FeedbackSection() {
               {comments.length === 0 ? (
                 <div className="flex h-full items-center justify-center text-center">
                   <div>
-                    <p className="text-sm font-medium text-theme-text">
+                    <p className="text-sm font-medium text-[#E85D3F]">
                       Be the first to leave a comment.
                     </p>
 
@@ -480,14 +480,14 @@ export function FeedbackSection() {
                             className="size-full object-cover"
                           />
                         ) : (
-                          <div className="grid size-full place-items-center text-xs font-bold text-theme-text">
+                          <div className="grid size-full place-items-center text-xs font-bold text-[#E85D3F]">
                             {item.name.charAt(0).toUpperCase()}
                           </div>
                         )}
                       </div>
 
                       <div className="min-w-0">
-                        <p className="text-sm font-semibold text-theme-text">
+                        <p className="text-sm font-semibold text-[#E85D3F]">
                           {item.name}
                         </p>
 
