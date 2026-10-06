@@ -8,6 +8,8 @@ import {
   X,
   Moon,
   Sun,
+  Github,
+  Linkedin,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -33,6 +35,17 @@ const links = [
   { to: "/about" as const, label: "About" },
   { to: "/work" as const, label: "Work" },
 ];
+
+/* Same auth button style on desktop + mobile */
+const authButtonClass = `
+  flex items-center gap-2
+  rounded-full
+  bg-[#dc651b]
+  px-4 py-2
+  text-sm font-medium text-white
+  transition-all duration-300
+  hover:bg-[#A9485D]
+`;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -70,6 +83,7 @@ export function SiteHeader() {
     }
   }, [darkMode]);
 
+  // Firebase auth state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -139,7 +153,12 @@ export function SiteHeader() {
 
         {/* Desktop navigation */}
         <nav
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex"
+          className="
+            absolute left-1/2 hidden
+            -translate-x-1/2
+            items-center gap-8
+            md:flex
+          "
           aria-label="Main navigation"
         >
           {links.map((link) => (
@@ -171,6 +190,7 @@ export function SiteHeader() {
             </Link>
           )}
 
+          {/* Let's connect */}
           <Link
             to="/connect"
             className="
@@ -208,20 +228,14 @@ export function SiteHeader() {
           </button>
         </nav>
 
-        {/* Auth - right side */}
+        {/* Desktop auth */}
         <div className="ml-auto hidden items-center gap-3 md:flex">
           {!authLoading &&
             (user ? (
               <button
                 type="button"
                 onClick={handleLogout}
-                className="
-                  flex items-center gap-2 rounded-full
-                  bg-[#dc651b] px-4 py-2
-                  text-sm font-medium text-white
-                  transition-all duration-300
-                  hover:bg-[#A9485D]
-                "
+                className={authButtonClass}
               >
                 <LogOut className="size-4" />
                 Logout
@@ -230,13 +244,7 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={handleLogin}
-                className="
-                  flex items-center gap-2 rounded-full
-                  bg-[#641F32] px-4 py-2
-                  text-sm font-medium text-white
-                  transition-all duration-300
-                  hover:bg-[#A9485D]
-                "
+                className={authButtonClass}
               >
                 <LogIn className="size-4" />
                 Login
@@ -278,8 +286,13 @@ export function SiteHeader() {
           "
           aria-label="Mobile navigation"
         >
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-5">
-
+          <div
+            className="
+              mx-auto flex max-w-7xl
+              flex-col items-center gap-5
+            "
+          >
+            {/* Main links */}
             {links.map((link) => (
               <Link
                 key={link.to}
@@ -295,6 +308,7 @@ export function SiteHeader() {
               </Link>
             ))}
 
+            {/* Admin */}
             {isAdmin && (
               <Link
                 to="/admin"
@@ -310,6 +324,7 @@ export function SiteHeader() {
               </Link>
             )}
 
+            {/* Let's connect */}
             <Link
               to="/connect"
               onClick={() => setOpen(false)}
@@ -351,6 +366,7 @@ export function SiteHeader() {
               )}
             </button>
 
+            {/* Mobile auth */}
             {!authLoading &&
               (user ? (
                 <button
@@ -359,14 +375,7 @@ export function SiteHeader() {
                     handleLogout();
                     setOpen(false);
                   }}
-                  className="
-                    mt-1 flex items-center gap-2
-                    rounded-full bg-[#dc651b]
-                    px-5 py-2.5
-                    text-sm font-medium text-white
-                    transition-all duration-300
-                    hover:bg-[#A9485D]
-                  "
+                  className={authButtonClass}
                 >
                   <LogOut className="size-4" />
                   Logout
@@ -378,14 +387,7 @@ export function SiteHeader() {
                     handleLogin();
                     setOpen(false);
                   }}
-                  className="
-                    mt-1 flex items-center gap-2
-                    rounded-full bg-[#641F32]
-                    px-5 py-2.5
-                    text-sm font-medium text-white
-                    transition-all duration-300
-                    hover:bg-[#A9485D]
-                  "
+                  className={authButtonClass}
                 >
                   <LogIn className="size-4" />
                   Login
@@ -415,8 +417,36 @@ export function SiteFooter() {
           sm:flex-row sm:items-center sm:justify-between sm:px-8
         "
       >
-        <p>Designed and built by {portfolio.name}.</p>
-        <p>React portfolio · Details ready to personalize</p>
+       <p>© 2026 Mehreen Rao — Built with curiosity.</p>
+        <div className="flex items-center gap-3">
+  <a
+    href="https://www.linkedin.com/in/mehreenrao/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="LinkedIn"
+    className="
+      text-[#641F32] dark:text-[#87917F]
+      transition-colors duration-300
+      hover:text-[#E85D3F]
+    "
+  >
+    <Linkedin className="size-5" />
+  </a>
+
+  <a
+    href="https://github.com/Meenu2005"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="GitHub"
+    className="
+      text-[#641F32] dark:text-[#87917F]
+      transition-colors duration-300
+      hover:text-[#E85D3F]
+    "
+  >
+    <Github className="size-5" />
+  </a>
+</div>
       </div>
     </footer>
   );
