@@ -8,6 +8,9 @@ import { LinkButton } from "@/components/portfolio/Button";
 import { SectionHeading } from "@/components/portfolio/SectionHeading";
 import { FeedbackSection } from "@/components/portfolio/FeedbackSection";
 import { portfolio } from "@/data/portfolio";
+import finditPreview from "@/assets/caseStudy/findit/login.png";
+import softroPreview from "@/assets/caseStudy/softro/hero.png";
+import zayvoPreview from "@/assets/caseStudy/zayvomedia/hero.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +42,9 @@ export const Route = createFileRoute("/")({
 function Index() {
   const pageRef = useRef<HTMLDivElement | null>(null);
   const heroRef = useRef<HTMLElement | null>(null);
+  const agencyWordRef = useRef<HTMLSpanElement | null>(null);
+  const audiencePhraseRef = useRef<HTMLSpanElement | null>(null);
+  const workStackRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
     const page = pageRef.current;
@@ -76,6 +82,135 @@ function Index() {
         duration: 0.38,
         stagger: 0.055,
       });
+
+      /*
+       * ROTATING HERO COPY
+       * Each highlighted phrase changes with a soft GSAP fade/slide.
+       */
+      const agencyWord = agencyWordRef.current;
+      const audiencePhrase = audiencePhraseRef.current;
+
+      if (agencyWord) {
+        const agencyOptions = ["agencies", "creators", "brands", "businesses"];
+        let agencyIndex = 0;
+
+        gsap.timeline({ repeat: -1, repeatDelay: 0.05 })
+          .to(agencyWord, {
+            autoAlpha: 0,
+            y: -7,
+            duration: 0.22,
+            delay: 0.5,
+            ease: "power2.in",
+            onComplete: () => {
+              agencyIndex = (agencyIndex + 1) % agencyOptions.length;
+              agencyWord.textContent = agencyOptions[agencyIndex] ?? "agencies";
+              gsap.set(agencyWord, { y: 7 });
+            },
+          })
+          .to(agencyWord, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.28,
+            ease: "power2.out",
+          });
+      }
+
+      if (audiencePhrase) {
+        const audienceOptions = [
+          "what you do",
+          "who you serve",
+          "how you want to be seen",
+        ];
+        let audienceIndex = 0;
+
+        gsap.timeline({ repeat: -1, repeatDelay: 0.05 })
+          .to(audiencePhrase, {
+            autoAlpha: 0,
+            y: -7,
+            duration: 0.22,
+            delay: 0.5,
+            ease: "power2.in",
+            onComplete: () => {
+              audienceIndex = (audienceIndex + 1) % audienceOptions.length;
+              audiencePhrase.textContent =
+                audienceOptions[audienceIndex] ?? "what you do";
+              gsap.set(audiencePhrase, { y: 7 });
+            },
+          })
+          .to(audiencePhrase, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.28,
+            ease: "power2.out",
+          });
+      }
+
+      /*
+       * SELECTED WORK CARD STACK
+       * The top preview flips/slips away, then returns behind the stack.
+       */
+      const workStack = workStackRef.current;
+      if (workStack) {
+        const cards = gsap.utils.toArray<HTMLElement>(
+          workStack.querySelectorAll("[data-work-card]")
+        );
+
+        cards.forEach((card, index) => {
+          gsap.set(card, {
+            zIndex: cards.length - index,
+            y: index * 10,
+            scale: 1 - index * 0.035,
+            rotate: index === 0 ? 0 : index % 2 === 0 ? -2 : 2,
+            transformOrigin: "50% 0%",
+          });
+        });
+
+        let topIndex = 0;
+        const cycleWorkCards = () => {
+          const topCard = cards[topIndex];
+          if (!topCard) return;
+
+          gsap.to(topCard, {
+            y: -210,
+            rotationX: -78,
+            rotationZ: -4,
+            autoAlpha: 0,
+            duration: 0.48,
+            ease: "power2.in",
+            onComplete: () => {
+              gsap.set(topCard, {
+                y: 24,
+                rotationX: 0,
+                rotationZ: 2,
+                scale: 0.91,
+                autoAlpha: 1,
+                zIndex: 0,
+              });
+
+              topIndex = (topIndex + 1) % cards.length;
+
+              cards.forEach((card, index) => {
+                const position = (index - topIndex + cards.length) % cards.length;
+                gsap.to(card, {
+                  y: position * 10,
+                  scale: 1 - position * 0.035,
+                  rotate: position === 0 ? 0 : position % 2 === 0 ? -2 : 2,
+                  zIndex: cards.length - position,
+                  duration: 0.35,
+                  ease: "power2.out",
+                  overwrite: "auto",
+                });
+              });
+
+              gsap.delayedCall(0.52, cycleWorkCards);
+            },
+          });
+        };
+
+        gsap.delayedCall(1, cycleWorkCards);
+
+        // The enclosing GSAP context cleans up delayed calls and tweens on unmount.
+      }
 
       /*
        * STACKED PAGE EFFECT
@@ -239,11 +374,23 @@ function Index() {
 
           <div className="reveal-up delay-1 mt-5 w-full max-w-2xl sm:mt-7">
             <p className="text-sm leading-6 text-[#B8BDB8] sm:text-lg sm:leading-8">
-              I design and develop websites
-              for agencies, creators, brands,
-              and businesses, built around
-              what you do, who you serve, and
-              how you want to be seen.
+              I design and develop websites for{" "}
+              <span
+                ref={agencyWordRef}
+                className="inline-block font-semibold text-[#E85D3F]"
+                aria-label="agencies, creators, brands, and businesses"
+              >
+                agencies
+              </span>
+              , built around<br />
+              <span
+                ref={audiencePhraseRef}
+                className="inline-block font-semibold text-[#E85D3F]"
+                aria-label="what you do, who you serve, and how you want to be seen"
+              >
+                what you do
+              </span>
+              .
             </p>
           </div>
 
@@ -301,7 +448,7 @@ function Index() {
           next stacked section appear.
       ========================================================== */}
 
-      <section className="relative z-[2] border-b border-[#28323C]/50 bg-background">
+      <section className="relative z-[2]  bg-background">
         <FeedbackSection />
       </section>
 
@@ -312,28 +459,73 @@ function Index() {
           Feedback has completely finished.
       ========================================================== */}
 
-      <section className="stack-panel sticky top-16 z-[3] min-h-[calc(100svh-4rem)] overflow-hidden border-b border-[#28323C]/50 bg-surface-card">
-        <div className="mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col justify-center px-5 py-16 sm:px-8 sm:py-28">
-          <div className="flex flex-col gap-7 text-[#E85D3F] lg:flex-row lg:items-end lg:justify-between lg:gap-8">
-            <SectionHeading
-              eyebrow="Selected work"
-              title="Ideas shaped into useful, memorable interfaces."
-              copy="A collection of recent projects where I solved real-world problems through design and code."
-            />
+      <section className="stack-panel sticky top-16 z-[3] min-h-[calc(110svh-6rem)] overflow-hidden  bg-background">
+        <div className="mx-auto flex min-h-[calc(110svh-4rem)] w-full max-w-7xl flex-col items-center justify-center px-4 py-12 sm:px-8 sm:py-16">
+          <div className="mb-7 text-center sm:mb-9">
+            <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#E85D3F] sm:text-xs">
+              Selected work
+            </p>
+          </div>
 
-            <LinkButton
-              to="/work"
-              tone="quiet"
-              className="self-start lg:self-auto"
+          <div
+            ref={workStackRef}
+            className="relative mx-auto h-[210px] w-full max-w-[310px] [perspective:1000px] sm:h-[290px] sm:max-w-[420px]"
+            aria-label="Featured project previews"
+          >
+            <article
+              data-work-card
+              className="absolute left-1/2 top-0 aspect-[2/1] w-[90%] -translate-x-1/2 overflow-hidden rounded-xl border border-[#E85D3F]/20 bg-[#e85d3f]/10 shadow-2xl"
             >
-              See all work
-              <ArrowRight className="size-4" />
-            </LinkButton>
+              <img
+                src={finditPreview}
+                alt="Findit project interface preview"
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+              <span className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-3 pt-8 text-xs font-medium text-white sm:text-sm">
+                Findit
+              </span>
+            </article>
+
+            <article
+              data-work-card
+              className="absolute left-1/2 top-0 aspect-[1.55/1] w-[88%] -translate-x-1/2 overflow-hidden rounded-xl border border-white/20 bg-[#17100F] shadow-2xl"
+            >
+              <img
+                src={softroPreview}
+                alt="Softro Solutions website preview"
+                className="h-full w-full object-cover"
+                
+              />
+              <span className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-3 pt-8 text-xs font-medium text-white sm:text-sm">
+                Softro Solutions
+              </span>
+            </article>
+
+            <article
+              data-work-card
+              className="absolute left-1/2 top-0 aspect-[1.55/1] w-[88%] -translate-x-1/2 overflow-hidden rounded-xl border border-white/20 bg-[#17100F] shadow-2xl"
+            >
+              <img
+                src={zayvoPreview}
+                alt="Zayvo Media website preview"
+                className="h-full w-full object-cover"
+                
+              />
+              <span className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-3 pt-8 text-xs font-medium text-white sm:text-sm">
+                Zayvo Media
+              </span>
+            </article>
           </div>
 
-          <div className="mt-10 sm:mt-12">
-            {/* <ProjectCard project={projects[0]} index={0} /> */}
-          </div>
+          <LinkButton
+            to="/work"
+           
+            className="mt-8 bg-[#E85D3F] text-white hover:bg-[#d84d31] justify-center sm:mt-10"
+          >
+            See all work
+            <ArrowRight className="size-4" />
+          </LinkButton>
         </div>
       </section>
 
